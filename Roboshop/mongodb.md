@@ -32,10 +32,10 @@ systemctl status mongod ### should be active
 ps -ef | grep mongo
 netstat -lntp
 
-### replace 127.0.0.1 with 0.0.0.0
+### replace 127.0.0.1 with 0.0.0.0 in config
 vim /etc/mongod.conf
 
-restart mongod
+### Restart mongod
 systemctl restart mongod
 
 ### check the status of mongod service again

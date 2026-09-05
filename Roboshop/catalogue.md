@@ -5,10 +5,10 @@ dnf module disable nodejs -y
 dnf module enable nodejs:20 -y
 dnf install nodejs -y
 
-### add app user
+### add application user
 useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
 
-### create directory to store app
+### create directory to store application
 mkdir /app
 ### download app 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
@@ -20,10 +20,10 @@ unzip /tmp/catalogue.zip
 cd /app 
 npm install 
 
-### setup Systemctl
+### setup Systemctl catalogue service
 vim /etc/systemd/system/catalogue.service
-### copy to catalogue.service file and update mongodb IP
 
+### copy to catalogue.service file and update mongodb IP
 [Unit]
 Description = Catalogue Service
 
@@ -31,7 +31,7 @@ Description = Catalogue Service
 User=roboshop
 Environment=MONGO=true
 // highlight-start
-Environment=MONGO_URL="mongodb://<MONGODB-SERVER-IPADDRESS>:27017/catalogue"
+Environment=MONGO_URL="mongodb://3.80.74.138:27017/catalogue"
 // highlight-end
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=catalogue
@@ -42,6 +42,15 @@ WantedBy=multi-user.target
 ### reload daemon
 
 systemctl daemon-reload
+
+## start the catalogue service
+systemctl enable catalogue
+systemctl start catalogue
+
+## to check log
+journalctl -u catalogue  | grep catalogue
+
+
 
 
 

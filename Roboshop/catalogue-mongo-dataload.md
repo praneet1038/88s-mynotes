@@ -14,4 +14,14 @@ gpgcheck=0
 dnf install mongodb-mongosh -y
 
 ### load master data information
-mongosh --host 3.239.212.114 </app/db/master-data.js
+mongosh --host 3.80.74.138 </app/db/master-data.js
+
+### connect to db server
+mongosh --host 3.80.74.138
+
+### review databases & data loaded
+show dbs
+use catalogue
+show collections
+## should all types of robots i
+db.products.find()
