@@ -16,6 +16,11 @@ rm -rf /usr/share/nginx/html/*
 ## download frontend content
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
 
+## extract frontend application content
+
+cd /usr/share/nginx/html 
+unzip /tmp/frontend.zip
+
 ## reload the frontend webpage(nginx service) to check if it was updated 
 http://3.91.233.131/
 ## create nginx reverse proxy configuration to reach backend services
@@ -85,8 +90,7 @@ http {
     }
 }
 ```
-Note - 
-Replace localhost with ip address of catalogue
+# Note - Replace localhost with ip address of catalogue
 
 ## restart nginx service
 systemctl restart nginx

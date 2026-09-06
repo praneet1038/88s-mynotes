@@ -11,10 +11,15 @@ baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
 enabled=1
 gpgcheck=0
 
+## install mongodb client
+
 dnf install mongodb-mongosh -y
 
 ### load master data information
 mongosh --host 3.80.74.138 </app/db/master-data.js
+or
+mongosh --host mongodb.jirawiser.online </app/db/master-data.js
+
 
 ### connect to db server
 mongosh --host 3.80.74.138
