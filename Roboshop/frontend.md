@@ -117,9 +117,14 @@ cd /var/log/nginx
 ls
 less access.log
 ```
-Inspect this access.log content for requests coming from your browser. May have error messages. 
+Inspect this access.log content for requests coming from your browser. May have error messages. Shift+g to last message
 
 ```
 less /var/log/messages
 ```
 
+
+## Troubleshooting
+Error when adding an item to cart.- 
+status code 404
+User registration and logging in fine

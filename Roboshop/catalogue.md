@@ -65,11 +65,15 @@ systemctl enable catalogue
 systemctl start catalogue
 ```
 
-## to check log
+## check log
 ```
 journalctl -u catalogue  | grep catalogue
 ```
 ## Troubleshoot
+### -f (option to follow)
+journalctl -u catalogue -f
+
+
 
 
 
