@@ -50,6 +50,8 @@ systemctl start catalogue
 ## to check log
 journalctl -u catalogue  | grep catalogue
 
+## Troubleshoot
+
 
 
 

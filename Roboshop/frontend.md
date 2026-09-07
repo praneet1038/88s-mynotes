@@ -98,3 +98,21 @@ systemctl restart nginx
 ## Refresh the page to check catalogue loaded products from the database
 
 ![alt text](image-3.png)
+
+##  if page is not loading troubleshoot
+- Referece video - 22 Jan session 11, timestamp - 1:06:43 - 1:10:51
+- Use browser developer console to debug if frontend page isn't loading products from catalogue and mongodb database.
+- Request goes from frontend to catalogue(backend) to mongodb
+
+- Check logs (access.log, error.log) - 
+``` 
+cd /var/logs/nginx 
+ls
+less access.log
+```
+Inspect this access.log content for requests coming from your browser. May have error messages. 
+
+```
+less /var/logs/messages
+```
+

@@ -42,3 +42,5 @@ systemctl restart mongod
 should show 0.0.0.0 under tcp local address
 which means service accepts traffic from all remote servers, port no. 27017
 ![alt text](image-1.png)
+
+### Troubleshooting
