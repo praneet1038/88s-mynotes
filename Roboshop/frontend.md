@@ -1,10 +1,11 @@
 ## install nginx 1.24
-dnf module list nginx
+```dnf module list nginx
 dnf module disable nginx
 dnf module enable nginx:1.24 -y
 dnf module install nginx -y
 systemctl enable nginx
 systemctl start nginx
+```
 
 ## check nginx installation in browser. Should load the default Red Hat Enterprise Linux Test Page
  
@@ -12,12 +13,23 @@ http://3.91.233.131/
 ![alt text](image-2.png)
 
 ## remove default content 
+``` 
 rm -rf /usr/share/nginx/html/* 
+```
 ## download frontend content
+```
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
+```
+## extract frontend application content
+
+```cd /usr/share/nginx/html 
+unzip /tmp/frontend.zip
+```
 
 ## reload the frontend webpage(nginx service) to check if it was updated 
-http://3.91.233.131/
+
+http://mongodb.jirawiser.online/
+
 ## create nginx reverse proxy configuration to reach backend services
 vim /etc/nginx/nginx.conf
 
@@ -85,8 +97,7 @@ http {
     }
 }
 ```
-Note - 
-Replace localhost with ip address of catalogue
+# Note - Replace localhost with catalogue subdomain
 
 ## restart nginx service
 systemctl restart nginx
@@ -94,3 +105,26 @@ systemctl restart nginx
 ## Refresh the page to check catalogue loaded products from the database
 
 ![alt text](image-3.png)
+
+##  if page is not loading troubleshoot
+- Referece video - 22 Jan session 11, timestamp - 1:06:43 - 1:10:51
+- Use browser developer console to debug if frontend page isn't loading products from catalogue and mongodb database.
+- Request goes from frontend to catalogue(backend) to mongodb
+
+- Check logs (access.log, error.log) - 
+``` 
+cd /var/log/nginx 
+ls
+less access.log
+```
+Inspect this access.log content for requests coming from your browser. May have error messages. Shift+g to last message
+
+```
+less /var/log/messages
+```
+
+
+## Troubleshooting
+Error when adding an item to cart.- 
+status code 404
+User registration and logging in fine
