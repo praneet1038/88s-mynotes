@@ -11,3 +11,5 @@ sytemctl start redis
 ## status check
 netstat -lntp
 ![alt text](image-4.png)
+
+## Route 53 - add A record to map redis subdomain to IP address
