@@ -138,6 +138,8 @@ http://13.222.182.137/api/payment/pay/jpd 500 (INTERNAL SERVER ERROR)
 
 systemctl status payment error - 
 
+journalctl -u payment -l
+
 Sep 09 11:07:17 ip-172-31-30-95.ec2.internal payment[1982]: [2026-09-09 11:07:17,964] ERROR in payment: HTTPConnectionPool(host='user.jirawiser.online.com', port=8080): Max retries exceeded with url: /check/jpd (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fd67a93e490>: Failed to establish a new connection: [Errno -2] Name or service not known'))
 
 DNS resolution error - 
