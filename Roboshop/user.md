@@ -65,6 +65,11 @@ telnet mongodb.jirawiser.online 27017
 ## Troubleshoot
 ```
 telnet redis.jirawiser.online 6379
+telnet mongodb.jirawiser.online 27017
+
 ```
+
+Check user.conf file for typos
+
 Ctrl+] to escape
 quit to exit
