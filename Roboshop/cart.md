@@ -28,9 +28,16 @@ systemctl start cart
 
 ## Troubleshooting
 
+Error adding item to cart
+
 "" connection refused error 
 curl http://localhost:8080/health
 curl: (7) Failed to connect to localhost port 8080: Connection refused
+netstat -lntp didn't list node service as node server wasn't running 
+Forgot to add app user 'roboshop'
+Resolution - add user
+
+
 
 
 

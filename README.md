@@ -1,2 +1,3 @@
 # 88s-mynotes
-Follow Devops course
+
+![alt text](image.png)

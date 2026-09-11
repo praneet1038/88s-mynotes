@@ -104,7 +104,9 @@ systemctl restart nginx
 
 ## Refresh the page to check catalogue loaded products from the database
 
-![alt text](image-3.png)
+![Products loaded](image-3.png)
+
+![Order placed successfully](image-11.png)
 
 ##  if page is not loading troubleshoot
 - Referece video - 22 Jan session 11, timestamp - 1:06:43 - 1:10:51
@@ -128,3 +130,19 @@ less /var/log/messages
 Error when adding an item to cart.- 
 status code 404
 User registration and logging in fine
+
+Always check for typos in service configuration file, host names
+
+Order errors out on clicking 'Pay' button - 
+http://13.222.182.137/api/payment/pay/jpd 500 (INTERNAL SERVER ERROR)
+
+systemctl status payment error - 
+
+journalctl -u payment -l
+
+Sep 09 11:07:17 ip-172-31-30-95.ec2.internal payment[1982]: [2026-09-09 11:07:17,964] ERROR in payment: HTTPConnectionPool(host='user.jirawiser.online.com', port=8080): Max retries exceeded with url: /check/jpd (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fd67a93e490>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+
+DNS resolution error - 
+
+Immediately check this on payment server - 
+curl http://user.jirawiser.online:8080/check/jpd
