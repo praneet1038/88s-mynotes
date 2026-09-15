@@ -125,7 +125,7 @@ Inspect this access.log content for requests coming from your browser. May have 
 less /var/log/messages
 ```
 
-
+![alt text](image-13.png)
 ## Troubleshooting
 Error when adding an item to cart.- 
 status code 404

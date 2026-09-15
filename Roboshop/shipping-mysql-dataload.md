@@ -8,3 +8,5 @@
 `mysql -h mysql.jirawiser.online -uroot -pRoboShop@1 < /app/db/master-data.sql`
 - Restart shipping service
 `systemctl restart shipping`
+- connect to DB and verify cities database
+`mysql`

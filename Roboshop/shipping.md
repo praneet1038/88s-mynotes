@@ -21,6 +21,7 @@ cd /app
 mvn clean package 
 mv target/shipping-1.0.jar shipping.jar 
 ```
+shipping.jar comes with a lightweight server. Nodejs doesn't require server. 
 
 - Create shipping service
 `vim /etc/systemd/system/shipping.service`
@@ -47,7 +48,9 @@ systemctl daemon-reload
 systemctl enable shipping
 systemctl start shipping
 ```
+## check status
 
+![alt text](image-12.png)
 
 ## Troubleshooting
 curl: (7) Failed to connect to localhost port 8080: Connection refused
@@ -56,3 +59,6 @@ curl: (7) Failed to connect to localhost port 8080: Connection refused
 curl http://localhost:8080/health returns error. Connection refused error.
 mysql server is accessible from shipping
 No process is listening on localhost:8080. Not running after installing maven. 
+Shipping service will not run until data is loaded to mysql. Load master data to mysql and then restart shipping service. This should give success on curl health check.
+
+curl -v http://localhost:8080/health (verbose)
