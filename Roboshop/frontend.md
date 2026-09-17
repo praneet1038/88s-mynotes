@@ -146,3 +146,5 @@ DNS resolution error -
 
 Immediately check this on payment server - 
 curl http://user.jirawiser.online:8080/check/jpd
+
+- TODO configure 50x.html 
