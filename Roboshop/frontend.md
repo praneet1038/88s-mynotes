@@ -125,7 +125,7 @@ Inspect this access.log content for requests coming from your browser. May have 
 less /var/log/messages
 ```
 
-
+![alt text](image-13.png)
 ## Troubleshooting
 Error when adding an item to cart.- 
 status code 404
@@ -146,3 +146,5 @@ DNS resolution error -
 
 Immediately check this on payment server - 
 curl http://user.jirawiser.online:8080/check/jpd
+
+- TODO configure 50x.html 
