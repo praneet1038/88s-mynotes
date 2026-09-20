@@ -1,13 +1,16 @@
 #!/bin/bash
 
 echo "This script demonstrates the use of special variables in shell scripting."
-echo "The script NAME is: $0"
-echo "All ARGUMENTS passed to the script as a LIST: $@"
-echo "The NUMBER of arguments passed to the script is: $#"
-echo "The process ID of the script is: $$"
-echo "Current working DIRECTORY is: $PWD"
-echo "Who am I? $USER"
+echo "\$0 (script NAME): $0"
+echo "\$@ (all ARGUMENTS as a LIST): $@"
+echo "\$# (NUMBER of arguments): $#"
+echo "\$\$ (process ID): $$"
+echo "\$PWD (current working DIRECTORY): $PWD"
+echo "\$USER (current user): $USER"
+echo "if \$USER is prints empty value, then use \$(whoami)  to get the current user. : $(whoami)"
+
 sleep 100 &
-echo "The process ID of the last BACKGROUND command is: $!"
-echo "Home DIRECTORY of the $USER is: $HOME"
-echo "All ARGUMENTS passed to the script as a SINGLE STRING: $*"
+echo "\$! (process ID of last BACKGROUND command): $!"
+
+echo "\$HOME (home DIRECTORY of $USER): $HOME"
+echo "\$* (all ARGUMENTS as a SINGLE STRING): $*"
