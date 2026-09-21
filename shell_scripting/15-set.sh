@@ -6,9 +6,7 @@ G="\e[32m" # Green
 Y="\e[33m" # Yellow
 N="\e[0m" # Reset to default color
 
-echo -e "$R This is red text $N"
-echo -e "$G This is green text $N"
-echo -e "$Y This is yellow text $N"
+set -e # Exit immediately if a command exits with a non-zero status
 
 LOG_FOLDER="/var/log/shell_scripting/"
 LOG_FILE="$LOG_FOLDER$0.log"
@@ -23,22 +21,12 @@ fi
 
 mkdir -p $LOG_FOLDER
 
-check_installation() {
-    if [ $1 -eq 0 ]; then
-        echo -e "$G $2 ....SUCCESS $N" | tee -a $LOG_FILE
-    else
-        echo -e "$R $2 ....FAILED $N" | tee -a $LOG_FILE
-        exit 1
-    fi
-}
-
 for package in $@
 do
     dnf list installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]; then
         echo -e "$G Installing $package...$N" | tee -a $LOG_FILE
-        dnf install $package -y &>> $LOG_FILE
-        check_installation $? "$package installation"
+        dnf install $package -y &>> $LOG_FILE        
     else
         echo -e "$package is already installed. $Y Skipping installation.$N" | tee -a $LOG_FILE
     fi
