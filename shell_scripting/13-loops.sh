@@ -24,7 +24,7 @@ check_installation() {
 
 for package in $@
 do
-    dnf installed $package -y &>> $LOG_FILE
+    dnf list installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]; then
         echo "Installing $package..." | tee -a $LOG_FILE
         dnf install $package -y &>> $LOG_FILE
