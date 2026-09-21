@@ -9,8 +9,6 @@ G="\e[32m" # Green
 Y="\e[33m" # Yellow
 N="\e[0m" # Reset to default color
 
-
-echoo "Testing trap command"
 LOG_FOLDER="/var/log/shell_scripting/"
 LOG_FILE="$LOG_FOLDER$0.log"
 
