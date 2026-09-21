@@ -22,9 +22,9 @@ dnf install nginx -y
 check_installation $? "Nginx"
 
 dnf install mysql -y
-check_installation "$? MySQL"
+check_installation $? "MySQL"
 
 dnf install nodejs -y
-check_installation "$? Nodejs"
+check_installation $? "Nodejs"
 
 echo "All installations completed successfully."
