@@ -27,7 +27,7 @@ check_installation() {
     if [ $1 -eq 0 ]; then
         echo -e "$G $2 ....SUCCESS $N" | tee -a $LOG_FILE
     else
-        echo -e"$R $2 ....FAILED $N" | tee -a $LOG_FILE
+        echo -e "$R $2 ....FAILED $N" | tee -a $LOG_FILE
         exit 1
     fi
 }
@@ -36,11 +36,11 @@ for package in $@
 do
     dnf list installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]; then
-        echo -e"$G Installing $package...$N" | tee -a $LOG_FILE
+        echo -e "$G Installing $package...$N" | tee -a $LOG_FILE
         dnf install $package -y &>> $LOG_FILE
         check_installation $? "$package installation"
     else
-        echo -e"$Y $package is already installed. Skipping installation.$N" | tee -a $LOG_FILE
+        echo -e "$Y $package is already installed. Skipping installation.$N" | tee -a $LOG_FILE
     fi
 done
 

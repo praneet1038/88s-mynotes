@@ -34,5 +34,4 @@ do
     fi
 done
 
-
 echo "All installations completed successfully." | tee -a $LOG_FILE
