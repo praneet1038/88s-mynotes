@@ -2,7 +2,7 @@
 
 # This script will use a function to check if an installation was successful or not. It will also demonstrate the use of functions in shell scripting.
 
-LOG_FOLDER="/var/Log/shell_scripting/"
+LOG_FOLDER="/var/log/shell_scripting/"
 LOG_FILE="$LOG_FOLDER$0.log"
 
 # check root user
