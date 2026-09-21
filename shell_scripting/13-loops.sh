@@ -31,6 +31,6 @@ do
         check_installation $? "$package installation"
     else
         echo "$package is already installed. Skipping installation." | tee -a $LOG_FILE
-done    
+done
 
 echo "All installations completed successfully." | tee -a $LOG_FILE
