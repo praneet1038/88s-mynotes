@@ -20,7 +20,7 @@ else
 fi
 
 echo "Installing mySQL..."
-dnf install mysql-server -y
+dnf install mysql -y
 
 if [ $? -eq 0 ]; then
     echo "MySQL installed sucessfully."
