@@ -1,12 +1,9 @@
 #!/bin/bash
-# This script will use for loop to print numbers from 1 to 10
-for i in {1..10}
-do
-    echo "Number: $i"
-done        
 
 LOG_FOLDER="/var/log/shell_scripting/"
 LOG_FILE="$LOG_FOLDER$0.log"
+
+# This script will use a for loop to install packages passed as arguments to the script. It will also log the installation process and check if the installations were successful or not.
 
 USER=$(id -u)
 if [ $USER -ne 0 ]; then
@@ -27,8 +24,13 @@ check_installation() {
 
 for package in $@
 do
-    dnf install $package -y &>> $LOG_FILE
-    check_installation $? "$package installation"
+    dnf installed $package -y &>> $LOG_FILE
+    if [ $? -ne 0 ]; then
+        echo "Installing $package..." | tee -a $LOG_FILE
+        dnf install $package -y &>> $LOG_FILE
+        check_installation $? "$package installation"
+    else
+        echo "$package is already installed. Skipping installation." | tee -a $LOG_FILE
 done    
 
 echo "All installations completed successfully." | tee -a $LOG_FILE
