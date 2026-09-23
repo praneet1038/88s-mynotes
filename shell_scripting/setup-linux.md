@@ -1,4 +1,13 @@
-- Setting up Linux environment...
+- Setup up RHEL Linux environment...
+- Use Red Hat Universal Base Image (UBI). It is based on RHEL, freely redistributable, and works with Docker without a Red Hat subscription. The full RHEL image and Red Hat support may require a subscription, but UBI is suitable for local development.
+
+run this command if the container should be deleted automatically on exit
+`docker run --rm -it --name rhel-dev registry.access.redhat.com/ubi9/ubi bash`  
+run this command if the container should persist
+`docker run -it --name rhel-dev registry.access.redhat.com/ubi9/ubi bash`  
+This should redirect the prompt to the container 
+
+- Setup up Alpine Linux environment...
 
 ### Run a small & fast linux(Alpine) container in docker to test the script
 `docker run --rm -it --name alpine-dev alpine:latest sh`
@@ -10,7 +19,7 @@
 # Inside the container, you can run the following commands to set up your environment:
 
 
-# Update package list & Install necessary packages
+# Update package list & Install necessary packages Alpine
 `sudo apt update
 sudo apt install -y git vim curl wget
 echo "Linux setup complete!"`
