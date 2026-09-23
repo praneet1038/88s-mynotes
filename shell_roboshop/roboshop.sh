@@ -8,7 +8,7 @@ AMI_ID="ami-0220d79f3f480ecf5" # Redhat-9-DevOps-practice (joinDevOps AMI)
 for instance in $@
 do     
   echo "Creating instance $instance"
-  instance_id=$(aws ec2 run-instances 
+  instance_id=$(aws ec2 run-instances \
   --image-id $AMI_ID \
   --instance-type t3.micro \
   --security-group-ids $SG_ID \
