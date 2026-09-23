@@ -5,6 +5,7 @@ run this command if the container should be deleted automatically on exit
 `docker run --rm -it --name rhel-dev registry.access.redhat.com/ubi9/ubi bash`  
 run this command if the container should persist
 `docker run -it --name rhel-dev registry.access.redhat.com/ubi9/ubi bash`  
+This should redirect the prompt to the container 
 
 - Setup up Alpine Linux environment...
 
