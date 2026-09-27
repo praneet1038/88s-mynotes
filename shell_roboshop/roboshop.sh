@@ -18,7 +18,7 @@ do
   --output text); 
   echo "$instance_id"
 
-  if [ "$instance_id" == "frontend" ]
+  if [ "$instance_id" == "frontend" ];
   then
     IP=$(aws ec2 describe-instances --instance-ids $instance_id --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
     RECORD_NAME=DOMAIN_NAME
@@ -27,6 +27,8 @@ do
     RECORD_NAME=$instance.$DOMAIN_NAME
     echo "Instance created successfully for $instance with ID: $instance_id IP: $IP"
   fi
+  
+  echo "$instance IP: $IP"
 
   aws route53 change-resource-record-sets \
   --hosted-zone-id $HOSTED_ZONE_ID \
@@ -48,7 +50,6 @@ do
     ]
   }' \
   --no-cli-pager
-
  echo "DNS record created successfully for $instance with IP: $IP"
 
 done
