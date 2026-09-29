@@ -106,4 +106,3 @@ validate_command_execution $? "Installing mongodb shell client"
 ### load the catalogue schema to mongodb server
 mongosh --host $MONGO_HOST </app/schema/catalogue.js &>> $LOG_FILE
 validate_command_execution $? "Loading catalogue schema to mongodb server"
-
