@@ -10,6 +10,8 @@ N="\e[0m" # Reset to default color
 
 LOG_FOLDER="/var/log/shell_scripting/"
 LOG_FILE="$LOG_FOLDER$0.log"
+SCRIPT_DIR=$PWD
+MONGO_HOST=$MONGODB.jirawiser.online
 
 
 # check if the script is run as root user
@@ -31,15 +33,15 @@ validate_command_execution() {
 }
 
 # disable the default nodejs module to install nodejs 20 package
-dnf module disable nodejs -y
+dnf module disable nodejs -y &>> $LOG_FILE
 validate_command_execution $? "Disabling default nodejs module"
 
 # enable and install nodejs 20 package
 
-dnf module enable nodejs:20 -y
+dnf module enable nodejs:20 -y &>> $LOG_FILE
 validate_command_execution $? "Enabling nodejs 20 module"
 
-dnf install nodejs -y 
+dnf install nodejs -y  &>> $LOG_FILE
 validate_command_execution $? "Installing nodejs package"
 
 ### check if user roboshop exists or not, if not then create the user
@@ -58,17 +60,21 @@ fi
 curl -s -L -o /tmp/catalogue.zip "https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip"
 validate_command_execution $? "Downloading catalogue application code"
 
+# delete the existing application code if any
+rm -rf /app/* &>> $LOG_FILE
+
 unzip -o /tmp/catalogue.zip -d /app
 validate_command_execution $? "Extracting catalogue application code"
 
 ### install dependencies
 cd /app
-npm install 
+VALIDATE_COMMAND_EXECUTION $? "Changing directory to /app"
+npm install &>> $LOG_FILE
 validate_command_execution $? "Installing catalogue application dependencies"
 
 ### setup systemctl catalogue service
 
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
 validate_command_execution $? "Copying catalogue systemd service file"  
 
 ### start and enable the catalogue service
@@ -76,3 +82,15 @@ systemctl daemon-reload
 systemctl enable catalogue
 systemctl start catalogue
 validate_command_execution $? "Starting catalogue service"
+
+### install mongo shell client to connect to mongodb server
+cp mongo.repo /etc/yum.repos.d/mongo.repo
+validate_command_execution $? "Copying mongo.repo file"
+
+dnf install mongodb-mongosh -y &>> $LOG_FILE
+validate_command_execution $? "Installing mongodb shell client"
+
+### load the catalogue schema to mongodb server
+mongosh --host $MONGO_HOST </app/schema/catalogue.js &>> $
+validate_command_execution $? "Loading catalogue schema to mongodb server"
+
