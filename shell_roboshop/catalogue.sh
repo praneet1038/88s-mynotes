@@ -62,13 +62,14 @@ validate_command_execution $? "Downloading catalogue application code"
 
 # delete the existing application code if any
 rm -rf /app/* &>> $LOG_FILE
+validate_command_execution $? "Deleting existing application code"
 
 unzip -o /tmp/catalogue.zip -d /app
 validate_command_execution $? "Extracting catalogue application code"
 
 ### install dependencies
 cd /app
-VALIDATE_COMMAND_EXECUTION $? "Changing directory to /app"
+validate_command_execution $? "Changing directory to /app"
 npm install &>> $LOG_FILE
 validate_command_execution $? "Installing catalogue application dependencies"
 
@@ -84,13 +85,13 @@ systemctl start catalogue
 validate_command_execution $? "Starting catalogue service"
 
 ### install mongo shell client to connect to mongodb server
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 validate_command_execution $? "Copying mongo.repo file"
 
 dnf install mongodb-mongosh -y &>> $LOG_FILE
 validate_command_execution $? "Installing mongodb shell client"
 
 ### load the catalogue schema to mongodb server
-mongosh --host $MONGO_HOST </app/schema/catalogue.js &>> $
+mongosh --host $MONGO_HOST </app/schema/catalogue.js &>> $LOG_FILE
 validate_command_execution $? "Loading catalogue schema to mongodb server"
 
