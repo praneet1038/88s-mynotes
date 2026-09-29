@@ -9,6 +9,8 @@ N="\e[0m" # Reset to default color
 LOG_FOLDER="/var/log/shell_roboshop/"
 LOG_FILE="$LOG_FOLDER$0.log"
 
+# Check if the script is run as root user
+
 USER=$(id -u)
 if [ $USER -ne 0 ]; then
     echo -e "$R This script must be run as root. Please run with sudo or as root user. $N" | tee -a $LOG_FILE
