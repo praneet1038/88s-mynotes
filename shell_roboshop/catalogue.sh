@@ -49,7 +49,7 @@ enable_nodejs_repo() {
 # check if nodejsis installed or not, if not then install nodejs 20 package
 dnf list installed nodejs &>> $LOG_FILE
 if [ $? -ne 0 ]; then
-    echo -e "$Y nodejs is not installed. Installing nodejs 20 package... $N" | tee -a $LOG_FILE``
+    echo -e "$Y nodejs is not installed. Installing nodejs 20 package... $N" | tee -a $LOG_FILE
     enable_nodejs_repo $? "Installing nodejs 20 package"
 else
     echo -e "$Y nodejs is already installed. Skipping installation. $N"
