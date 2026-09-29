@@ -32,17 +32,29 @@ validate_command_execution() {
     fi
 }
 
-# disable the default nodejs module to install nodejs 20 package
-dnf module disable nodejs -y &>> $LOG_FILE
-validate_command_execution $? "Disabling default nodejs module"
+enable_nodejs_repo() {
+    # disable the default nodejs module to install nodejs 20 package
+    dnf module disable nodejs -y &>> $LOG_FILE
+    validate_command_execution $? "Disabling default nodejs module"
 
-# enable and install nodejs 20 package
+    # enable and install nodejs 20 package
 
-dnf module enable nodejs:20 -y &>> $LOG_FILE
-validate_command_execution $? "Enabling nodejs 20 module"
+    dnf module enable nodejs:20 -y &>> $LOG_FILE
+    validate_command_execution $? "Enabling nodejs 20 module"
 
-dnf install nodejs -y  &>> $LOG_FILE
-validate_command_execution $? "Installing nodejs package"
+    dnf install nodejs -y  &>> $LOG_FILE
+    validate_command_execution $? "Installing nodejs package"
+}
+
+# check if nodejsis installed or not, if not then install nodejs 20 package
+dnf list installed nodejs &>> $LOG_FILE
+if [ $? -ne 0 ]; then
+    echo -e "$Y nodejs is not installed. Installing nodejs 20 package... $N" | tee -a $LOG_FILE``
+    enable_nodejs_repo $? "Installing nodejs 20 package"
+else
+    echo -e "$Y nodejs is already installed. Skipping installation. $N"
+
+
 
 ### check if user roboshop exists or not, if not then create the user
 id roboshop &>> $LOG_FILE
