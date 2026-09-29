@@ -30,15 +30,29 @@ validate_command_execution() {
     fi
 }
 
-# install nodejs 20 package
+# disable the default nodejs module to install nodejs 20 package
+dnf module disable nodejs -y
+validate_command_execution $? "Disabling default nodejs module"
+
+# enable and install nodejs 20 package
 
 dnf module enable nodejs:20 -y
+validate_command_execution $? "Enabling nodejs 20 module"
+
 dnf install nodejs -y 
 validate_command_execution $? "Installing nodejs package"
 
+### check if user roboshop exists or not, if not then create the user
+id roboshop &>> $LOG_FILE
+validate_command_execution $? "Checking if roboshop user exists"
+
 ### add application user
-useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
-validate_command_execution $? "Adding application user"
+if [ $? -ne 0 ]; then
+    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+    validate_command_execution $? "Adding application user"
+else
+    echo -e "$Y roboshop user already exists. Skipping user creation. $N" | tee -a $LOG_FILE
+fi
 
 ### download and extract the application code
 curl -s -L -o /tmp/catalogue.zip "https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip"
@@ -52,7 +66,7 @@ cd /app
 npm install 
 validate_command_execution $? "Installing catalogue application dependencies"
 
-### setup systemcctl catalogue service
+### setup systemctl catalogue service
 
 cp catalogue.service /etc/systemd/system/catalogue.service
 validate_command_execution $? "Copying catalogue systemd service file"  
