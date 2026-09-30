@@ -53,8 +53,7 @@ if [ $? -ne 0 ]; then
     enable_nodejs_repo $? "Installing nodejs 20 package"
 else
     echo -e "$Y nodejs is already installed. Skipping installation. $N"
-
-
+fi
 
 ### check if user roboshop exists or not, if not then create the user
 id roboshop &>> $LOG_FILE
@@ -115,4 +114,3 @@ else
     echo -e "$Y catalogue database already exists. Skipping schema loading. $N" | tee -a $LOG_FILE
     exit 0
 fi
-

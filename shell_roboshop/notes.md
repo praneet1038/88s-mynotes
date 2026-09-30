@@ -9,6 +9,9 @@ git switch shell-roboshop
 ### output 
 ![alt text](image.png)
 
+### command to check for syntax errors without executing it
+`bash -n catalogue.sh`
+
 ### use trap command
 
 # Troubleshooting
