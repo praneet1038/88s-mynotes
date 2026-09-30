@@ -9,6 +9,8 @@ git switch shell-roboshop
 ### output 
 ![alt text](image.png)
 
+### use trap command
+
 # Troubleshooting
 - frontend public ipaddress missing
 - incorrect variable reference for DOMAIN_NAME
