@@ -57,7 +57,6 @@ fi
 
 ### check if user roboshop exists or not, if not then create the user
 id roboshop &>> $LOG_FILE
-validate_command_execution $? "Checking if roboshop user exists"
 
 ### add application user
 if [ $? -ne 0 ]; then
