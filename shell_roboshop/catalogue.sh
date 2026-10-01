@@ -67,7 +67,7 @@ else
 fi
 
 ### download and extract the application code
-curl -s -L -o /tmp/catalogue.zip "https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip"
+curl -s -L -o /tmp/catalogue.zip "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
 validate_command_execution $? "Downloading catalogue application code"
 
 # delete the existing application code if any
@@ -107,7 +107,7 @@ validate_command_execution $? "Installing mongodb shell client"
 mongosh --host $MONGO_HOST --eval "show dbs" | grep catalogue &>> $LOG_FILE
 if [ $? -ne 0 ]; then
     echo -e "$Y catalogue database does not exist. Loading schema to mongodb server... $N" | tee -a $LOG_FILE
-    mongosh --host $MONGO_HOST </app/schema/catalogue.js &>> $LOG_FILE
+    mongosh --host $MONGO_HOST </app/db/master-data.js &>> $LOG_FILE
     validate_command_execution $? "Loading catalogue schema to mongodb server"
 else
     echo -e "$Y catalogue database already exists. Skipping schema loading. $N" | tee -a $LOG_FILE
