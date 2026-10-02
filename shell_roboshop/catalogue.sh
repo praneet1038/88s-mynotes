@@ -74,7 +74,7 @@ validate_command_execution $? "Downloading catalogue application code"
 rm -rf /app/* &>> $LOG_FILE
 validate_command_execution $? "Deleting existing application code"
 
-unzip -o /tmp/catalogue.zip -d /app
+unzip -o /tmp/catalogue.zip -d /app &>> $LOG_FILE
 validate_command_execution $? "Extracting catalogue application code"
 
 ### install dependencies
