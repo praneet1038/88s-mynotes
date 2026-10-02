@@ -11,7 +11,7 @@ N="\e[0m" # Reset to default color
 LOG_FOLDER="/var/log/shell_scripting/"
 LOG_FILE="$LOG_FOLDER$0.log"
 SCRIPT_DIR=$PWD
-MONGO_HOST=$MONGODB.jirawiser.online
+MONGO_HOST=mongodb.jirawiser.online
 
 
 # check if the script is run as root user
