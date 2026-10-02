@@ -34,11 +34,11 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo
 validate_command_execution $? "Copying mongo.repo file"
 
 # install mongdb package
-dnf install mongodb-org -y 
+dnf install mongodb-org -y &>>$LOG_FILE
 validate_command_execution $? "Installing mongodb package"
 
 # start the mongodb service
-systemctl start mongod
+systemctl start mongod 
 validate_command_execution $? "Starting mongodb service"
 
 # enable the mongodb service to start on boot
