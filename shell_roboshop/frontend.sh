@@ -64,6 +64,14 @@ validate_command_execution $? "Downloading frontend application"
 unzip -o /tmp/frontend.zip -d /usr/share/nginx/html &>> $LOG_FILE
 validate_command_execution $? "Extracting frontend application"
 
+# copy the roboshop_nginx.conf file to /usr/share/nginx/html/
+cp $SCRIPT_DIR/roboshop_nginx.conf /usr/share/nginx/html 
+validate_command_execution $? "Copying roboshop_nginx.conf file"  
+
+# restart the nginx service to apply the changes
+systemctl restart nginx &>> $LOG_FILE
+validate_command_execution $? "Restarting nginx service"
+
 # Configure the frontend application with the backend API endpoint
 
 
