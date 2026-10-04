@@ -42,7 +42,7 @@ validate_command_execution $? "Enabling nginx:1.24 module"
 
 # check if nginx is installed or not, if not then install nginx package
 dnf list installed nginx &>> $LOG_FILE
-if [$? -ne 0]; then
+if [ $? -ne 0 ]; then
     echo -e "$Y nginx is not installed. Installing nginx package... $N" | tee -a $LOG_FILE
     dnf install nginx -y &>> $LOG_FILE
     validate_command_execution $? "Installing nginx package"
@@ -51,7 +51,7 @@ else
 fi
 
 # enable and start the nginx service
-systemctl enable ngin &>> $LOG_FILE
+systemctl enable nginx &>> $LOG_FILE
 systemctl start nginx &>> $LOG_FILE
 
 # remove default nginx content 
@@ -65,7 +65,7 @@ unzip -o /tmp/frontend.zip -d /usr/share/nginx/html &>> $LOG_FILE
 validate_command_execution $? "Extracting frontend application"
 
 # Configure the frontend application with the backend API endpoint
- 
+
 
 
 
