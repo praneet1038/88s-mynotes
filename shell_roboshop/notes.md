@@ -6,6 +6,9 @@ mkdir /source; cd /source; git clone https://github.com/praneet1038/88s-mynotes;
 ### output 
 ![alt text](image.png)
 
+# write a script to uninstall a roboshop related packages (nginx, node.js, mongodb, redis, rabbitmq, )
+uninstall_package.sh
+
 ### command to check for syntax errors without executing it
 `bash -n catalogue.sh`
 
