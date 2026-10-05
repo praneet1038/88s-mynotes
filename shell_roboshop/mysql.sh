@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script will setup mysql component for roboshop application. It will install mysql-server package, and set root passwor for mysql-server.
+
 # This script will set color of text in the terminal using ANSI escape codes. 
 R="\e[31m" # Red
 G="\e[32m" # Green
