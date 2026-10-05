@@ -33,9 +33,9 @@ validate_command_execution() {
 }
 
 dnf module list redis &>> $LOG_FILE
-dnf module enable redis:7.0 -y &>> $LOG_FILE
+dnf module enable redis:7 -y &>> $LOG_FILE
 validate_command_execution $? "Enabling redis 7 module"
-dnf module install redis:7.0 -y &>> $LOG_FILE
+dnf module install redis:7 -y &>> $LOG_FILE
 validate_command_execution $? "Installing redis 7 package"
 
 # update listen address from 127.0.0.1 to 0.0.0.0 permanently in redis config file
