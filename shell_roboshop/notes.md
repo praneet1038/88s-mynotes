@@ -1,5 +1,5 @@
 # clone git repo
-mkdir /source; cd /source; git clone https://github.com/praneet1038/88s-mynotes; git switch shell-roboshop
+mkdir /source; cd /source; git clone https://github.com/praneet1038/88s-mynotes; cd /source/88s-mynotes; git switch shell-roboshop
 
 # check if mongodb installation was successful
 `netstat -lntp`
