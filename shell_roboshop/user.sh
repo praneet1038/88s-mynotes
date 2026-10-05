@@ -32,7 +32,7 @@ validate_command_execution() {
 }
 
 # check if nodejs is installed or not, if not then install nodejs 20 package
-dnf list installed nodejs &?? $LOG_FILE
+dnf list installed nodejs &>> $LOG_FILE
 if [ $? -ne 0 ]; then
     echo -e "$Y nodejs is not installed. Installing nodejs 20 package...$N" | tee -a $LOG_FILE
     dnf module install nodejs:20 -y &>> $LOG_FILE
