@@ -59,6 +59,7 @@ curl -L -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
 cd /app
 unzip -o /tmp/user.zip -d /app &>> $LOG_FILE
 validate_command_execution $? "Downloading and extracting user application code to /app directory"
+npm install &>> $LOG_FILE
 
 # copy the user systemd service file to /etc/systemd/system/user.service
 cp $SCRIPT_DIR/user.service /etc/systemd/system/user.service

@@ -33,3 +33,14 @@ MongoNetworkError: getaddrinfo ENOTFOUND mongodb.jirawiser.online
  Loading catalogue schema to mongodb server ....FAILED
 
 - Most probably because PKB configured jirawiser.online domain name server to his aws account route53. Retry changing this to your aws account.
+
+# SHELL ROBOSHOP
+
+## mongodb.sh OUTPUT
+![alt text](image-2.png)
+## catalogue.sh OUTPUT
+![alt text](image-1.png)
+## redis.sh OUTPUT
+![alt text](image-3.png)
+## cart.sh output
+
