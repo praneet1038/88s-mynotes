@@ -39,10 +39,12 @@ else
 fi
 
 # enable and start the mysql-server service
-systemctl enable mysql-server &>> $LOG_FILE
-systemctl start mysql-server &>> $LOG_FILE
+systemctl enable mysqld &>> $LOG_FILE
+systemctl start mysqld &>> $LOG_FILE
 validate_command_execution $? "Starting mysql-server service"
 
 # set root password for mysql-server
-mysql_secure_installation --set-root-pass RoboShop@1
+echo -e "Setting root password for mysql-server..."
+read -s -p "Enter new root password: " MYSQL_ROOT_PASSWORD
+mysql_secure_installation --set-root-pass $MYSQL_ROOT_PASSWORD
 validate_command_execution $? "Setting root password for mysql-server"
