@@ -11,6 +11,7 @@ N="\e[0m" # Reset to default color
 LOG_FOLDER="/var/log/shell_roboshop/"
 LOG_FILE="$LOG_FOLDER$0.log"
 MYSQL_HOST=mysql.jirawiser.online
+SCRIPT_DIR=$PWD
 
 # Check if the script is run as root user
 
