@@ -11,6 +11,7 @@ This should redirect the prompt to the container
 `dnf install -y unzip curl`
 - run this command to install aws cli  ([source](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
 `curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash`
+- Create IAM user with administrator access permission policy, create access key for cli (no user/pwd)
 - Authenticate aws account
 `aws configure`
 Enter access key id, secret access key & default region (us-east-1). Rest is empty
