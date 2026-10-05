@@ -7,6 +7,8 @@
 - run this command if the container should persist
 `docker run -it --name rhel-dev registry.access.redhat.com/ubi9/ubi bash`  
 This should redirect the prompt to the container 
+- Exec bash on running container 
+`docker exec -it rhel-dev bash`
 - install dependencies curl, unzip if not installed
 `dnf install -y unzip curl`
 - run this command to install aws cli  ([source](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
