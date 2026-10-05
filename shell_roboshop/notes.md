@@ -35,7 +35,7 @@ MongoNetworkError: getaddrinfo ENOTFOUND mongodb.jirawiser.online
 - Most probably because PKB configured jirawiser.online domain name server to his aws account route53. Retry changing this to your aws account.
 
 # SHELL ROBOSHOP
-
+Run all script multiple times to check for idempotency
 ## mongodb.sh OUTPUT
 ![alt text](image-2.png)
 ## catalogue.sh OUTPUT
