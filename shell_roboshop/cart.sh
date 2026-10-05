@@ -44,7 +44,7 @@ fi
 # check if user roboshop exists or not, if not then create the user
 id roboshop &>> $LOG_FILE
 if [ $? -ne 0 ]; then
-    echo -e "&Y user roboshop does not exist. Creating user roboshop... $N" | tee -a $LOG_FILE
+    echo -e "$Y user roboshop does not exist. Creating user roboshop... $N" | tee -a $LOG_FILE
     useradd roboshop &>> $LOG_FILE
     validate_command_execution $? "Creating user roboshop"
 else
