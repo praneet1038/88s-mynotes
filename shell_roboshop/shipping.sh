@@ -109,7 +109,7 @@ mysql -h $MYSQL_HOST -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql
 validate_command_execution $? "Creating app user for shipping app to connec to mysql-server" 
 
 ## Load the shipping data to mysql-server
-mysql -h $MYSQL_HOST -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/data.sql
+mysql -h $MYSQL_HOST -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql
 validate_command_execution $? "Loading shipping data to mysql-server"
 
 ## Restart the shipping service to apply changes
