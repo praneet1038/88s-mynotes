@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script will install mongodb database for roboshop applicatin. It will install mongodb package, configure the mongodb service.
+
 # This script will set color of text in the terminal using ANSI escape codes. 
 R="\e[31m" # Red
 G="\e[32m" # Green

@@ -40,7 +40,25 @@ Run all script multiple times to check for idempotency
 ![alt text](image-2.png)
 ## catalogue.sh OUTPUT
 ![alt text](image-1.png)
-## redis.sh OUTPUT
+## redis.sh 
 ![alt text](image-3.png)
+## user.sh output
+![alt text](image-6.png)
 ## cart.sh output
+![alt text](image-5.png)
+## mysql.sh output
+![alt text](image-4.png)
+## shipping.sh output
+![alt text](image-7.png)
+![alt text](image-8.png)
+## rabbitmq.sh output
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
+## payment.sh output
+![alt text](image-12.png)
+Error when installing dependencies. 
+![alt text](image-13.png)
+remove check on installed packages as dnf is already idempotent 
+![alt text](image-14.png)
 

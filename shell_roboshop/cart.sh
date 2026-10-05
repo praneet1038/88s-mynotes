@@ -45,7 +45,7 @@ fi
 id roboshop &>> $LOG_FILE
 if [ $? -ne 0 ]; then
     echo -e "$Y user roboshop does not exist. Creating user roboshop... $N" | tee -a $LOG_FILE
-    useradd roboshop &>> $LOG_FILE
+    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>> $LOG_FILE
     validate_command_execution $? "Creating user roboshop"
 else
     echo -e "$Y user roboshop already exists. Skipping user creation. $N"

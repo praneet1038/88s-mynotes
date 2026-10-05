@@ -50,6 +50,7 @@ fi
 mkdir -p /app &>> $LOG_FILE
 
 # check if /app directory is empty or not, if not then delete the contents of the directory
+cd /app
 rm -rf /app/* &>> $LOG_FILE
 validate_command_execution $? "Deleting content of /app directory"
 

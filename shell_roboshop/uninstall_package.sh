@@ -8,7 +8,7 @@ G="\e[32m" # Green
 Y="\e[33m" # Yellow
 N="\e[0m" # Reset to default color
 
-LOG_FOLDER="/var/log/shell_scripting/"
+LOG_FOLDER="/var/log/shell_roboshop/"
 LOG_FILE="$LOG_FOLDER$0.log"
 SCRIPT_DIR=$PWD
 
@@ -23,9 +23,9 @@ mkdir -p $LOG_FOLDER
 
 validate_command_execution() {
     if [ $1 -eq 0 ]; then
-        echo -e "$G $2 ....SUCCESS $N" | tee -a $LOG_FILE
+        echo -e " $2 ....$G SUCCESS $N" | tee -a $LOG_FILE
     else
-        echo -e "$R $2 ....FAILED $N" | tee -a $LOG_FILE
+        echo -e " $2 ....$R FAILED $N" | tee -a $LOG_FILE
         exit 1
     fi
 }
