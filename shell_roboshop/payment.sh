@@ -32,15 +32,9 @@ validate_command_execution() {
     fi
 }
 
-# check if python is installed or not, if not then install python package
-dnf list installed python3 &>> $LOG_FILE
-if [ $? -ne 0 ]; then
-    echo -e "$Y python3 is not installed. Installing python3 package... $N" | tee -a $LOG_FILE
-    dnf install python3 gcc python3-devel -y &>> $LOG_FILE
-    validate_command_execution $? "Installing python3 package"
-else
-    echo -e "$Y python3 is already installed. Skipping installation. $N" | tee -a $LOG_FILE
-fi
+# install python3, gcc, and python3-devel packages
+dnf install python3 gcc python3-devel -y &>> $LOG_FILE
+validate_command_execution $? "Installing python3, gcc, and python3-devel packages"
 
 # check if user roboshop exists or not, if not then create the user
 id roboshop &>> $LOG_FILE
@@ -57,7 +51,7 @@ mkdir -p /app &>> $LOG_FILE
 
 # check if /app directory is empty or not, if not then delete the contents of the directory
 rm -rf /app/* &>> $LOG_FILE
-validate_command_execution $? "Deleting contents of /app directory"
+validate_command_execution $? "Deleting content of /app directory"
 
 # download and extract the shipping application code to /app directory
 curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip 
@@ -67,7 +61,7 @@ validate_command_execution $? "Downloading and extracting payment application co
 
 # install the required python packages from requirements.txt file
 cd /app
-pip3 install -r requirements.txt
+pip3 install -r requirements.txt &>> $LOG_FILE
 validate_command_execution $? "Installing required python packages from requirements.txt file"
 
 # copy the payment.service file to /etc/systemd/system/payment.service
