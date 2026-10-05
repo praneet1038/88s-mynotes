@@ -37,19 +37,19 @@ cp $SCRIPT_DIR/rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
 validate_command_execution $? "Copying rabbitmq.repo file"
 
 # check if rabbitmq is installed or not, if not then install rabbitmq package
-dnf list installed rabbitmq &>> $LOG_FILE
+dnf list installed rabbitmq-server &>> $LOG_FILE
 if [ $? -ne 0 ]; then
-    echo -e "$Y rabbitmq is not installed. Installing rabbitmq package... $N" | tee -a $LOG_FILE
-    dnf install rabbitmq -y &>> $LOG_FILE
-    validate_command_execution $? "Installing rabbitmq package"
+    echo -e "$Y rabbitmq is not installed. Installing rabbitmq-server package... $N" | tee -a $LOG_FILE
+    dnf install rabbitmq-server -y &>> $LOG_FILE
+    validate_command_execution $? "Installing rabbitmq-server package"
 else
-    echo -e "$Y rabbitmq is already installed. Skipping installation. $N" | tee -a $LOG_FILE
+    echo -e "$Y rabbitmq-server is already installed. Skipping installation. $N" | tee -a $LOG_FILE
 fi
 
 # enable and start the rabbitmq service
-systemctl enable rabbitmq &>> $LOG_FILE
-systemctl start rabbitmq &>> $LOG_FILE
-validate_command_execution $? "Starting rabbitmq service"
+systemctl enable rabbitmq-server &>> $LOG_FILE
+systemctl start rabbitmq-server &>> $LOG_FILE
+validate_command_execution $? "Starting rabbitmq-server service"
 
 ## create a user for roboshop application in rabbitmq
 
