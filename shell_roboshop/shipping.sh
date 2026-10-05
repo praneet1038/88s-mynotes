@@ -55,6 +55,10 @@ fi
 # check if the application directory exists or not, if not then create it
 mkdir -p /app &>> $LOG_FILE
 
+# check if /app directory is empty or not, if not then delete the contents of the directory
+rm -rf /app/* &>> $LOG_FILE
+validate_command_execution $? "Deleting contents of /app directory"
+
 # download and extract the shipping application code to /app directory
 curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip 
 cd /app
@@ -64,7 +68,11 @@ validate_command_execution $? "Downloading and extracting shipping application c
 # build the shipping application using maven
 cd /app 
 mvn clean package 
+validate_command_execution $? "Building shipping application using maven"
+
 mv target/shipping-1.0.jar shipping.jar 
+validate_command_execution $? "Renaming shipping jar file"
+
 
 # copy the shipping systemd service file to /etc/systemd/system/shipping.service
 cp $SCRIPT_DIR/shipping.service /etc/systemd/system/shipping.service
