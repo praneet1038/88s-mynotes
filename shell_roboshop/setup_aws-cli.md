@@ -7,10 +7,13 @@
 - run this command if the container should persist
 `docker run -it --name rhel-dev registry.access.redhat.com/ubi9/ubi bash`  
 This should redirect the prompt to the container 
+- Exec bash on running container 
+`docker exec -it rhel-dev bash`
 - install dependencies curl, unzip if not installed
 `dnf install -y unzip curl`
 - run this command to install aws cli  ([source](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
 `curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash`
+- Create IAM user with administrator access permission policy, create access key for cli (no user/pwd)
 - Authenticate aws account
 `aws configure`
 Enter access key id, secret access key & default region (us-east-1). Rest is empty

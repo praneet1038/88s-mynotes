@@ -1,0 +1,64 @@
+# clone git repo
+mkdir /source; cd /source; git clone https://github.com/praneet1038/88s-mynotes; cd /source/88s-mynotes; git switch shell-roboshop
+
+# check if mongodb installation was successful
+`netstat -lntp`
+### output 
+![alt text](image.png)
+
+# write a script to uninstall a roboshop related packages (nginx, node.js, mongodb, redis, rabbitmq, )
+uninstall_package.sh
+
+### command to check for syntax errors without executing it
+`bash -n catalogue.sh`
+
+### use trap command
+
+# Troubleshooting
+- frontend public ipaddress is not assigned in roboshop.sh. Private ip is address instead.
+- incorrect variable reference for DOMAIN_NAME in roboshop.sh
+- missing variable declarations - LOG_FILE & LOG_FOLDER in robosho.sh
+- Troubleshooting - found & fixed these bugs in catalogue.sh
+
+- roboshop user check failed because of incorrect exist status check at validate_execution function
+
+- incorrect catalogue app url path
+
+- incorrect mongo data file master-data.js.
+
+- incorrect mongodb_host path
+
+- Connecting to: mongodb://mongodb.jirawiser.online:27017/?directConnection=true&appName=mongosh+2.12.0
+MongoNetworkError: getaddrinfo ENOTFOUND mongodb.jirawiser.online
+ Loading catalogue schema to mongodb server ....FAILED
+
+- Most probably because PKB configured jirawiser.online domain name server to his aws account route53. Retry changing this to your aws account.
+
+# SHELL ROBOSHOP
+Run all script multiple times to check for idempotency
+## mongodb.sh OUTPUT
+![alt text](image-2.png)
+## catalogue.sh OUTPUT
+![alt text](image-1.png)
+## redis.sh 
+![alt text](image-3.png)
+## user.sh output
+![alt text](image-6.png)
+## cart.sh output
+![alt text](image-5.png)
+## mysql.sh output
+![alt text](image-4.png)
+## shipping.sh output
+![alt text](image-7.png)
+![alt text](image-8.png)
+## rabbitmq.sh output
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
+## payment.sh output
+![alt text](image-12.png)
+Error when installing dependencies. 
+![alt text](image-13.png)
+remove check on installed packages as dnf is already idempotent 
+![alt text](image-14.png)
+

@@ -28,7 +28,7 @@ unzip /tmp/frontend.zip
 
 ## reload the frontend webpage(nginx service) to check if it was updated 
 
-http://mongodb.jirawiser.online/
+http://jirawiser.online/
 
 ## create nginx reverse proxy configuration to reach backend services
 vim /etc/nginx/nginx.conf
