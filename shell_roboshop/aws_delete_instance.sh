@@ -20,7 +20,7 @@ aws ec2 terminate-instances \
       "Name=instance-state-name,Values=pending,running,stopping,stopped" \
     --query 'Reservations[].Instances[].InstanceId' \
     --output text) \
-  -- dry-run
+  --dry-run
 
 # Get confirmation from user 
 
