@@ -33,7 +33,7 @@ validate_command_execution() {
         echo -e "$2 ....$R FAILED $N" | tee -a $LOG_FILE
         exit 1
     fi
-},=
+}
 
 # install golang package
 dnf install golang -y &>> LOG_FILE
