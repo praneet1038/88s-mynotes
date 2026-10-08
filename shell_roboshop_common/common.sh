@@ -33,22 +33,27 @@ validate_command_execution() {
 }
 
 disable_package(){
-    dnf disable $1
+    dnf module disable $1
     validate_command_execution $? "Enabling $1 package"
 
 }
 
 enable_package_version(){
-    dnf enable $1 &>> $LOG_FILE
+    dnf module enable $1 &>> $LOG_FILE
     validate_command_execution $? "Enabling $1 package"
 
 }
 
 install_package(){
-    disable_package $1
-    enable_package_version $1
     dnf install $1 -y &>> $LOG_FILE
     validate_command_execution $? "Installing $1 package"
+}
+
+install_nodejs_package(){
+    disable_package $1
+    enable_package_version $1
+    validate_command_execution $? "Installing $1 package"
+
 }
 
 create_app_user(){
@@ -82,6 +87,8 @@ app_setup(){
     install_package_version nodejs:20
 
 }
+
+
 
 enable_start_service(){
     systemctl enable $1 &>> $LOG_FILE
