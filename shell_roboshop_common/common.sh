@@ -12,6 +12,9 @@ LOG_FOLDER="/var/log/shell_roboshop_common/"
 LOG_FILE="$LOG_FOLDER$0.log"
 SCRIPT_DIR=$PWD
 
+mkdir -p $LOG_FOLDER
+
+
 check_root(){
     USER=$(id -u)
     if [ $USER -ne 0 ]; then
