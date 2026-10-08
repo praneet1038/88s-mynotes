@@ -15,7 +15,7 @@ app_name=mongodb
 
 
 check_root
-create_app_user
+
 app_setup
 
 # copy the repo file mongo.repo to etc/yum.repos.d/mongo.repo

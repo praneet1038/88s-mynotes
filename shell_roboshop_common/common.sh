@@ -8,7 +8,7 @@ G="\e[32m" # Green
 Y="\e[33m" # Yellow
 N="\e[0m" # Reset to default color
 
-LOG_FOLDER="/var/log/shell_scripting/"
+LOG_FOLDER="/var/log/shell_roboshop_common/"
 LOG_FILE="$LOG_FOLDER$0.log"
 SCRIPT_DIR=$PWD
 
@@ -64,7 +64,7 @@ download_application(){
 extract_application(){
     mkdir -p /app 
     cd /app
-    unzip /tmp/$1 &>> $LOG_FILE
+    unzip /tmp/$1.zip &>> $LOG_FILE
     validate_command_execution $? $2
 }
 
@@ -74,6 +74,7 @@ reload_service(){
 
 app_setup(){
     create_app_user
+    download_application $app_name
     extract_application $app_name
     install_package_version nodejs:20
 
