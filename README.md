@@ -1,16 +1,89 @@
 # 88s-Mynotes
 
-This repository is a personal learning project focused on Linux administration, shell scripting, and deploying a multi-service e-commerce application called Roboshop. It includes study notes, troubleshooting references, and automation scripts used to install and configure services on Linux servers.
+<div align="center">
 
-## Project Overview
+![Linux](https://img.shields.io/badge/Linux-Advanced-2ea44f?style=for-the-badge&logo=linux)
+![Shell](https://img.shields.io/badge/Shell-Scripting-4EAA25?style=for-the-badge&logo=gnubash)
+![DevOps](https://img.shields.io/badge/DevOps-Roboshop-0A0A0A?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Learning%20Project-FFB000?style=for-the-badge)
 
-The project is organized into practical learning modules:
+A hands-on Linux, shell scripting, and DevOps learning repository focused on automating a multi-service e-commerce platform.
 
-- Linux Advanced: notes on inode concepts, directory structure, and disk management.
-- Shell Scripting: hands-on practice with variables, loops, functions, logging, error handling, and traps.
-- Roboshop: implementation notes and service-by-service deployment guidance for an e-commerce app.
-- shell_roboshop: automated shell scripts and systemd service files for provisioning and running the application stack.
-- shell_roboshop_common: shared shell automation assets and supporting scripts.
+</div>
+
+## Overview
+
+This repository is a personal study project built around three core areas:
+
+- Linux administration and system fundamentals
+- Shell scripting and automation best practices
+- End-to-end deployment of the Roboshop e-commerce application
+
+It combines practical notes, troubleshooting records, and executable scripts to help understand how services are installed, configured, and debugged in a real Linux environment.
+
+## Why This Project Exists
+
+The goal of this repo is to strengthen practical DevOps skills by working through real-world tasks such as:
+
+- managing Linux filesystems and system resources
+- writing reusable shell scripts for service setup
+- configuring multi-service app stacks
+- validating deployments with logs and service checks
+- debugging broken automation and fixing configuration issues
+
+## Architecture
+
+```mermaid
+flowchart LR
+    User[Client / Browser] --> FE[Frontend]
+    FE --> CAT[Catalogue]
+    FE --> USER[User]
+    FE --> CART[Cart]
+    CAT --> MONGO[(MongoDB)]
+    USER --> MONGO
+    CART --> REDIS[(Redis)]
+    CART --> MONGO
+    SHIP[Shipping] --> MYSQL[(MySQL)]
+    PAY[Payment] --> RABBIT[(RabbitMQ)]
+    DISPATCH[Dispatch] --> RABBIT
+```
+
+This project follows the Roboshop microservice-style deployment pattern, where each component is configured separately and then connected through common infrastructure services.
+
+## Topics Covered
+
+### Linux Fundamentals
+
+- inode concepts
+- filesystem layout
+- directory structure
+- disk management
+- service and system administration basics
+
+### Shell Scripting
+
+- variables and input handling
+- conditions and loops
+- functions and reusable code
+- logging and error handling
+- traps and cleanup logic
+- idempotent automation patterns
+
+### Roboshop Deployment
+
+The repository includes scripts and notes for deploying services such as:
+
+- Frontend
+- Catalogue
+- User
+- Cart
+- Shipping
+- Payment
+- MongoDB
+- MySQL
+- Redis
+- RabbitMQ
+- Dispatch
 
 ## Repository Structure
 
@@ -33,85 +106,54 @@ The project is organized into practical learning modules:
 │   ├── user.md
 │   └── ...
 ├── shell_roboshop/
-│   ├── mongodb.sh
-│   ├── catalogue.sh
 │   ├── cart.sh
-│   ├── user.sh
-│   ├── payment.sh
-│   ├── shipping.sh
+│   ├── catalogue.sh
+│   ├── dispatch.sh
 │   ├── frontend.sh
+│   ├── mongodb.sh
+│   ├── mysql.sh
+│   ├── payment.sh
+│   ├── rabbitmq.sh
+│   ├── redis.sh
 │   ├── roboshop.sh
+│   ├── shipping.sh
+│   ├── user.sh
 │   ├── *.service
-│   └── troubleshooting.md
+│   ├── notes.md
+│   ├── troubleshooting.md
+│   └── image-*.png
 ├── shell_scripting/
 │   ├── 01-helloworld.sh
-│   ├── 02-... 
+│   ├── 03-variables.sh
+│   ├── 08-datatypes.sh
+│   ├── 11-functions.sh
+│   ├── 13-loops.sh
+│   ├── 15-errorhandling-set.sh
+│   ├── 16-errorhandling-trap.sh
 │   └── notes.md
 ├── README.md
-└── .gitignore
+├── .gitignore
+└── .vscode/
 ```
 
-## What This Project Covers
+## Quick Start
 
-### Linux Fundamentals
-Learnings in this repo include:
-
-- Linux filesystem structure
-- Inodes and file metadata
-- Disk management and partitions
-- Basic server administration concepts
-
-### Shell Scripting
-The shell scripting section focuses on:
-
-- Variables and shell input
-- Conditional statements
-- Functions and reusable logic
-- Loops and iteration
-- Logging and error handling
-- Trap-based cleanup and signal handling
-
-### Roboshop Deployment
-The Roboshop section demonstrates how to deploy an online shopping application using multiple services such as:
-
-- Frontend
-- Catalogue
-- User
-- Cart
-- Shipping
-- Payment
-- MySQL / MongoDB / Redis / RabbitMQ
-
-The shell automation scripts in `shell_roboshop/` help install and configure these services on Linux machines, especially EC2-based environments.
-
-## Prerequisites
-
-Before using the scripts in this repository, ensure that you have:
-
-- A Linux server or VM running Amazon Linux, CentOS, or RHEL
-- Root or sudo access
-- Git installed
-- Network access for package installation
-- Required infrastructure such as AWS EC2 and DNS/Route53 setup for domain-based service configuration
-
-## Getting Started
-
-Clone the repository:
+Clone the repository and explore the scripts:
 
 ```bash
 git clone https://github.com/<your-user>/<your-repo>.git
 cd 88s-mynotes
+ls
 ```
 
-Review the notes and scripts:
+Review the shell automation folder:
 
 ```bash
-ls
 cd shell_roboshop
 ls
 ```
 
-Run a script manually when needed:
+Run a script manually:
 
 ```bash
 bash mongodb.sh
@@ -119,41 +161,49 @@ bash catalogue.sh
 bash frontend.sh
 ```
 
-Check syntax before executing a shell script:
+Validate script syntax before execution:
 
 ```bash
 bash -n catalogue.sh
 ```
 
-## Typical Workflow
+## Screenshots
 
-1. Read the relevant service notes in the `Roboshop/` folder.
-2. Review the matching shell script in `shell_roboshop/`.
-3. Run installation or configuration scripts on the target Linux system.
-4. Validate services using logs, systemctl, and port checks.
-5. Apply troubleshooting steps from the project notes when needed.
+Some examples from the project’s learning and deployment workflow:
+
+<div align="center">
+
+![Roboshop deployment overview](shell_roboshop/image.png)
+
+![MongoDB setup output](shell_roboshop/image-2.png)
+
+![Catalogue service output](shell_roboshop/image-1.png)
+
+![Application output examples](shell_roboshop/image-15.png)
+
+</div>
 
 ## Troubleshooting Notes
 
-This project includes practical debugging records for common issues such as:
+This repo also records common issues encountered during setup and deployment, including:
 
 - incorrect variable references
 - missing configuration values
-- failed service dependency checks
-- wrong application URL paths
-- MongoDB connectivity failures
-- EC2/Route53 and domain-related configuration problems
+- broken service dependency checks
+- wrong application URLs
+- MongoDB connectivity issues
+- Route53 and domain-related configuration problems
 
-The troubleshooting details are kept in notes and scripts to help practice real-world debugging.
+These notes help reinforce practical debugging instead of only focusing on success flows.
 
 ## Notes
 
-This repository is primarily for learning and experimentation. It may include manual steps, shell automation examples, and project notes derived from hands-on practice.
+This is a learning-focused repository intended for experimentation and hands-on practice. It is not meant to be treated as a production-ready deployment framework, but it is a strong working example of Linux and automation concepts in action.
 
 ## License
 
-This project is intended for educational use.
+Educational use only.
 
 ## Author
 
-Created as a learning repository for Linux and DevOps automation practices.
+Built as a Linux and DevOps learning project.
