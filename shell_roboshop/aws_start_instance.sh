@@ -2,11 +2,11 @@
 
 # This script will stop an instance based on name tag passed as an argument
 
-# safely check which instance will be deleted
+# safely check which instance will be started
 
 read -r -p "Enter instance name to start: " INSTANCE_TO_START
 
-aws ec2 start-instances \
+aws ec2 describe-instances \
   --filters "Name=tag:Name,Values=$INSTANCE_TO_START" \
   --query 'Reservations[].Instances[].{ID:InstanceId,State:State.Name,Name:Tags[?Key==`Name`]|[0].Value}' \
   --output table
@@ -26,10 +26,10 @@ aws ec2 start-instances \
 
 confirm() {
     read -r -p "$1 (yes/no): " answer
-    [[ "$answer" == "y" ]]
+    [[ "$answer" == "yes" ]]
 }
 
-if confirm "start the instance"; then
+if confirm "Start the instance"; then
     aws ec2 start-instances \
         --instance-ids $(aws ec2 describe-instances \
         --filters \

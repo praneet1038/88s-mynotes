@@ -26,7 +26,7 @@ aws ec2 terminate-instances \
 
 confirm() {
     read -r -p "$1 (yes/no): " answer
-    [[ "$answer" == "y" ]]
+    [[ "$answer" == "yes" ]]
 }
 
 if confirm "Terminate the instance"; then
