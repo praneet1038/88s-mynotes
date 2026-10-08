@@ -2,10 +2,6 @@
 
 # This script will setup dispatch component for roboshop application. It will install golang package, download and extract the application files to listen for rabbitmq messages. 
 
-#!/bin/bash
-
-# This script will setup catalgoue component for roboshop application. It will install required packages, download and extract the application code, and configure the systemd service for the catalogue component.
-
 # define color codes and log folderfor output messages
 R="\e[31m" # Red
 G="\e[32m" # Green
@@ -40,28 +36,36 @@ dnf install golang -y &>> LOG_FILE
 validate_command_execution $? "Installing golang package"
 
 # Create app user - roboshop
-useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>> $LOG_FILE
+validate_command_execution $? "Creating app user"
+
 
 # download and extract dispatch application 
 
 mkdir /app 
-curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch-v3.zip 
+curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch-v3.zip  &>> $LOG_FILE
 cd /app
-unzip /tmp/dispatch.zip
+unzip /tmp/dispatch.zip  &>> $LOG_FILE
+validate_command_execution $? "Extracting dispatch application files"
+
 
 # Install dependencies and build application
 
 cd /app
-go mod init dispatch
-go get
-go build
+go mod init dispatch  &>> $LOG_FILE
+go get  &>> $LOG_FILE
+go build  &>> $LOG_FILE
+validate_command_execution $? "Building application"
 
-# Create dispatch service
+# copy dispatch service file to etc
 
-vim /etc/systemd/system/dispatch.service
+cp $SCRIPT_DIR/dispatch.service /etc/systemd/system/dispatch.service  &>> $LOG_FILE
+validate_command_execution $? "Copying dispatch.service file"
+
 
 # Load, enable & start the service
 
-systemctl daemon-reload
-systemctl enable dispatch
-systemctl start dispatch
+systemctl daemon-reload  &>> $LOG_FILE
+systemctl enable dispatch  &>> $LOG_FILE
+systemctl start dispatch  &>> $LOG_FILE
+validate_command_execution $? "Starting dispatch service"
