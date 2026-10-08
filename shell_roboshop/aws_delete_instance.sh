@@ -4,7 +4,7 @@
 
 # safely check which instance will be deleted
 
-read "Enter instance name to delete: " INSTANCE_TO_DEL
+read -r -p "Enter instance name to delete: " INSTANCE_TO_DEL
 
 aws ec2 describe-instances \
   --filters "Name=tag:Name,Values=$INSTANCE_TO_DEL" \
