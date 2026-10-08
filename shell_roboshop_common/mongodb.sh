@@ -16,7 +16,6 @@ app_name=mongodb
 
 check_root
 
-app_setup
 
 # copy the repo file mongo.repo to etc/yum.repos.d/mongo.repo
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
@@ -24,8 +23,7 @@ cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 validate_command_execution $? "Copying mongo.repo file"
 
 # install mongdb package
-dnf install mongodb-org -y &>>$LOG_FILE
-validate_command_execution $? "Installing mongodb package"
+install_package mongodb-org
 
 enable_start_service mongod
 
