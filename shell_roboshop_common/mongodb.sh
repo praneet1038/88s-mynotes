@@ -3,7 +3,7 @@
 # This script will install mongodb database for roboshop applicatin. It will install mongodb package, configure the mongodb service.
 
 source ./common.sh
-app_name = mongodb
+app_name=mongodb
 
 # check root user
 # add user
