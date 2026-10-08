@@ -55,6 +55,7 @@ systemctl start shipping
 ## Troubleshooting
 curl: (7) Failed to connect to localhost port 8080: Connection refused
 
+tail /var/log/messages
 
 curl http://localhost:8080/health returns error. Connection refused error.
 mysql server is accessible from shipping
