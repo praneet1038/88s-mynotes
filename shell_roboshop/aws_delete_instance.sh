@@ -25,8 +25,8 @@ aws ec2 terminate-instances \
 # Get confirmation from user 
 
 confirm() {
-    read -r -p "$1 (y/n): " answer
-    [[ "$answer" == "yes" ]]
+    read -r -p "$1 (yes/no): " answer
+    [[ "$answer" == "y" ]]
 }
 
 if confirm "Terminate the instance"; then
@@ -38,7 +38,7 @@ if confirm "Terminate the instance"; then
         --query 'Reservations[].Instances[].InstanceId' \
         --output text)
 else
-    echo "Operation cancelled."
+    echo "Termination cancelled."
 fi
 
 
