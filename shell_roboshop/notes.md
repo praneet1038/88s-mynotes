@@ -15,7 +15,8 @@ uninstall_package.sh
 ### use trap command
 
 # Troubleshooting
-- frontend public ipaddress is not assigned in roboshop.sh. Private ip is address instead.
+### Bugs found in scripts
+- frontend public ipaddress is not assigned in roboshop.sh. Private ip is assigned instead.
 - incorrect variable reference for DOMAIN_NAME in roboshop.sh
 - missing variable declarations - LOG_FILE & LOG_FOLDER in robosho.sh
 - Troubleshooting - found & fixed these bugs in catalogue.sh
@@ -32,7 +33,7 @@ uninstall_package.sh
 MongoNetworkError: getaddrinfo ENOTFOUND mongodb.jirawiser.online
  Loading catalogue schema to mongodb server ....FAILED
 
-- Most probably because PKB configured jirawiser.online domain name server to his aws account route53. Retry changing this to your aws account.
+- jirawiser.online domain was configured to another aws account ns(name server) to his aws account route53. Retry changing this to your aws account. - This fixed the above issue with mongodb data load from catalogue  
 
 # SHELL ROBOSHOP
 Run all script multiple times to check for idempotency
@@ -62,3 +63,10 @@ Error when installing dependencies.
 remove check on installed packages as dnf is already idempotent 
 ![alt text](image-14.png)
 
+- Note: Dispatch was not setup. 
+
+# Application output
+![alt text](image-18.png)
+![alt text](image-17.png)
+![alt text](image-15.png)
+![alt text](image-16.png)
