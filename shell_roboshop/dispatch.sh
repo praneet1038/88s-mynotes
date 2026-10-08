@@ -39,7 +39,34 @@ validate_command_execution() {
 dnf install golang -y &>> LOG_FILE
 validate_command_execution $? "Installing golang package"
 
-# 
+# Create app user - roboshop
+useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+
+# download and extract dispatch application 
+
+mkdir /app 
+curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch-v3.zip 
+cd /app
+unzip /tmp/dispatch.zip
+
+# Install dependencies and build application
+
+cd /app
+go mod init dispatch
+go get
+go build
+
+# Create dispatch service
+
+vim /etc/systemd/system/dispatch.service
+
+# Load, enable & start the service
+
+systemctl daemon-reload
+systemctl enable dispatch
+systemctl start dispatch
+
+
 
 
 
