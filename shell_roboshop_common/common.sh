@@ -25,9 +25,9 @@ check_root(){
 
 validate_command_execution() {
     if [ $1 -eq 0 ]; then
-        echo -e "$(date %c) $2 ....$G SUCCESS $N" | tee -a $LOG_FILE
+        echo -e "$(date +%c) $2 ....$G SUCCESS $N" | tee -a $LOG_FILE
     else
-        echo -e "$(date %c) $2 ....$R FAILED $N" | tee -a $LOG_FILE
+        echo -e "$(date +%c) $2 ....$R FAILED $N" | tee -a $LOG_FILE
         exit 1
     fi
 }
