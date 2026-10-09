@@ -11,9 +11,9 @@ N="\e[0m" # Reset to default color
 LOG_FOLDER="/var/log/shell_roboshop_common/"
 LOG_FILE="$LOG_FOLDER$0.log"
 SCRIPT_DIR=$PWD
+START_TIME= $(date +%s)
 
 mkdir -p $LOG_FOLDER
-
 
 check_root(){
     USER=$(id -u)
@@ -25,9 +25,9 @@ check_root(){
 
 validate_command_execution() {
     if [ $1 -eq 0 ]; then
-        echo -e "$2 ....$G SUCCESS $N" | tee -a $LOG_FILE
+        echo -e "$(date %c) $2 ....$G SUCCESS $N" | tee -a $LOG_FILE
     else
-        echo -e "$2 ....$R FAILED $N" | tee -a $LOG_FILE
+        echo -e "$(date %c) $2 ....$R FAILED $N" | tee -a $LOG_FILE
         exit 1
     fi
 }
@@ -88,10 +88,14 @@ app_setup(){
 
 }
 
-
-
 enable_start_service(){
     systemctl enable $1 &>> $LOG_FILE
     systemctl start $1 &>> $LOG_FILE
     validate_command_execution $? "Starting $1 service"
+}
+
+get_total_time(){
+    END_TIME = date %s
+    TIME_TO_COMPLETE_PROCESS = $END_TIME - $START_TIME
+
 }
