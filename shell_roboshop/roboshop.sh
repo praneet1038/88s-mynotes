@@ -18,6 +18,8 @@ do
   --output text); 
   echo "$instance_id"
 
+  PublicIP=$(aws ec2 describe-instances --instance-ids $instance_id --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+
   if [ "$instance" == "frontend" ];
   then
     IP=$(aws ec2 describe-instances --instance-ids $instance_id --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
@@ -25,7 +27,7 @@ do
   else
     IP=$(aws ec2 describe-instances --instance-ids $instance_id --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
     RECORD_NAME="$instance.$DOMAIN_NAME"
-    echo "Instance created successfully for $instance with ID: $instance_id IP: $IP"
+    echo "Instance created successfully for $instance with ID: $instance_id Private IP: $IP Public IP: $PublicIP"
   fi
   
   echo "$instance IP: $IP"
