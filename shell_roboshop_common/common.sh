@@ -11,7 +11,7 @@ N="\e[0m" # Reset to default color
 LOG_FOLDER="/var/log/shell_roboshop_common/"
 LOG_FILE="$LOG_FOLDER$0.log"
 SCRIPT_DIR=$PWD
-START_TIME= $(date +%s)
+START_TIME=$(date +%s)
 
 mkdir -p $LOG_FOLDER
 
@@ -94,3 +94,8 @@ enable_start_service(){
     validate_command_execution $? "Starting $1 service"
 }
 
+get_total_time(){
+    END_TIME=$(date +%s)
+    TIME_TO_COMPLETE_PROCESS=$END_TIME - $START_TIME
+
+}
