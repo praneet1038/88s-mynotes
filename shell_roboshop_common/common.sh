@@ -46,7 +46,8 @@ enable_package_version(){
 
 install_package(){
     dnf install $1 -y &>> $LOG_FILE
-    validate_command_execution $? "Installing $1 package"
+    PACKAGE = $1
+    validate_command_execution $? "Installing $PACKAGE "
 }
 
 install_nodejs_package(){
@@ -65,15 +66,30 @@ create_app_user(){
     fi
 }
 
+remove_app_content(){
+    # delete the existing application code if any
+    rm -rf /app/* &>> $LOG_FILE
+    validate_command_execution $? "Deleting existing application code"
+}
+
 download_application(){
-    curl -s -L -o /tmp/$1.zip  https://roboshop-artifacts.s3.amazonaws.com/$1-v3.zip &>> $LOG_FILE
+    curl -s -L -o /tmp/$app_name.zip  https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip &>> $LOG_FILE
 }
 
 extract_application(){
     mkdir -p /app 
+    remove_app_content
     cd /app
-    unzip /tmp/$1.zip &>> $LOG_FILE
-    validate_command_execution $? $2
+    unzip /tmp/$app_name.zip &>> $LOG_FILE
+    validate_command_execution $? "Extracting $app_name application code"
+}
+
+install_dependencies_nodejs(){
+    ### install dependencies
+    cd /app
+    validate_command_execution $? "Changing directory to /app"
+    npm install &>> $LOG_FILE
+    validate_command_execution $? "Installing catalogue application dependencies"
 }
 
 reload_service(){
@@ -97,5 +113,5 @@ enable_start_service(){
 get_total_time(){
     END_TIME=$(date +%s)
     TIME_TO_COMPLETE_PROCESS=$(( $END_TIME - $START_TIME ))
-    echo -e "Completed $app_name installation in $TIME_TO_COMPLETE_PROCESS secs"
+    echo -e "Completed $app_name installation in $TIME_TO_COMPLETE_PROCESS secs" &>> $LOG_FILE
 }
