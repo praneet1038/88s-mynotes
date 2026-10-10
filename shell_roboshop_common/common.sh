@@ -33,13 +33,13 @@ validate_command_execution() {
 }
 
 disable_package(){
-    dnf module disable $1 -y
+    dnf module disable $1 -y &>> $LOG_FILE
     validate_command_execution $? "Enabling $1 package"
 
 }
 
 enable_package_version(){
-    dnf module enable $1 &>> $LOG_FILE
+    dnf module enable $1 -y &>> $LOG_FILE
     validate_command_execution $? "Enabling $1 package"
 
 }
