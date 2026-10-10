@@ -58,6 +58,7 @@ install_nodejs_package(){
 }
 
 create_app_user(){
+    id roboshop &>> $LOG_FILE
     if [ $? -ne 0 ]; then
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
         validate_command_execution $? "Adding application user"
