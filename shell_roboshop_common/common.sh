@@ -46,7 +46,7 @@ enable_package_version(){
 
 install_package(){
     dnf install $1 -y &>> $LOG_FILE
-    PACKAGE = $1
+    PACKAGE=$1
     validate_command_execution $? "Installing $PACKAGE "
 }
 
