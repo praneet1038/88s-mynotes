@@ -45,7 +45,7 @@ enable_package_version(){
 }
 
 install_package(){
-    dnf install $1 -y &>> $LOG_FILE
+    dnf module install $1 -y &>> $LOG_FILE
     PACKAGE=$1
     validate_command_execution $? "Installing $PACKAGE "
 }
@@ -112,5 +112,5 @@ enable_start_service(){
 get_total_time(){
     END_TIME=$(date +%s)
     TIME_TO_COMPLETE_PROCESS=$(( $END_TIME - $START_TIME ))
-    echo -e "Completed $app_name installation in $TIME_TO_COMPLETE_PROCESS secs" | tee -a &>> $LOG_FILE
+    echo -e "Completed $app_name installation in $TIME_TO_COMPLETE_PROCESS secs" | tee -a $LOG_FILE
 }
