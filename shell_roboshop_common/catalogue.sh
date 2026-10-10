@@ -23,8 +23,6 @@ install_nodejs_package
 install_dependencies_js
 create_app_user
 
-
-
 ### setup systemctl catalogue service
 
 cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
@@ -41,8 +39,6 @@ validate_command_execution $? "Copying mongo.repo file"
 
 install_package mongodb-mongosh
 
-
-
 ### load the catalogue schema to mongodb server
 
 ### check if database(catalogue) is already created or not, if not then load the schema to mongodb server
@@ -53,7 +49,6 @@ if [ $? -ne 0 ]; then
     validate_command_execution $? "Loading catalogue schema to mongodb server"
 else
     echo -e "$Y catalogue database already exists. Skipping schema loading. $N" | tee -a $LOG_FILE
-    exit 0
 fi
 
 get_total_time
