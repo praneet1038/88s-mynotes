@@ -32,7 +32,6 @@ validate_command_execution $? "Copying catalogue systemd service file"
 reload_service 
 enable_start_service catalogue
 
-
 ### install mongo shell client to connect to mongodb server
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 validate_command_execution $? "Copying mongo.repo file"

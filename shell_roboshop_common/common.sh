@@ -112,5 +112,5 @@ enable_start_service(){
 get_total_time(){
     END_TIME=$(date +%s)
     TIME_TO_COMPLETE_PROCESS=$(( $END_TIME - $START_TIME ))
-    echo -e "Completed $app_name installation in $TIME_TO_COMPLETE_PROCESS secs"
+    echo -e "Completed $app_name installation in $TIME_TO_COMPLETE_PROCESS secs" | tee -a &>> $LOG_FILE
 }
