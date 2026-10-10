@@ -19,11 +19,11 @@ check_root
 remove_app_content
 download_application
 extract_application
+install_nodejs_package
 install_dependencies_js
 create_app_user
 
 
-install_nodejs_package
 
 ### setup systemctl catalogue service
 
