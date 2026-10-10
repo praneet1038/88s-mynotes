@@ -100,7 +100,6 @@ app_setup(){
     create_app_user
     download_application $app_name
     extract_application $app_name
-    install_package_version nodejs:20
 
 }
 
@@ -113,5 +112,5 @@ enable_start_service(){
 get_total_time(){
     END_TIME=$(date +%s)
     TIME_TO_COMPLETE_PROCESS=$(( $END_TIME - $START_TIME ))
-    echo -e "Completed $app_name installation in $TIME_TO_COMPLETE_PROCESS secs" &>> $LOG_FILE
+    echo -e "Completed $app_name installation in $TIME_TO_COMPLETE_PROCESS secs"
 }
