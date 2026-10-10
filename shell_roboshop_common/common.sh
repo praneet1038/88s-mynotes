@@ -79,7 +79,6 @@ download_application(){
 
 extract_application(){
     mkdir -p /app 
-    remove_app_content
     cd /app
     unzip /tmp/$app_name.zip &>> $LOG_FILE
     validate_command_execution $? "Extracting $app_name application code"
