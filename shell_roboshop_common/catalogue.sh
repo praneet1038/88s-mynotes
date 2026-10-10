@@ -55,3 +55,5 @@ else
     echo -e "$Y catalogue database already exists. Skipping schema loading. $N" | tee -a $LOG_FILE
     exit 0
 fi
+
+get_total_time
