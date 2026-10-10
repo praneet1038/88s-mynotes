@@ -14,7 +14,7 @@ download_application
 extract_application
 install_nodejs_package
 install_dependencies_js
-create_app_cart
+create_app_user
 
 ### setup systemctl cart service
 
