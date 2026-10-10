@@ -33,7 +33,7 @@ validate_command_execution() {
 }
 
 disable_package(){
-    dnf module disable $1
+    dnf module disable $1 -y
     validate_command_execution $? "Enabling $1 package"
 
 }
@@ -51,10 +51,9 @@ install_package(){
 }
 
 install_nodejs_package(){
-    disable_package nodejs
-    enable_package_version nodejs:20
-    install_package nodejs
-    validate_command_execution $? "Installing nodejs package"
+    disable_package nodejs &>> $LOG_FILE
+    enable_package_version nodejs:20 &>> $LOG_FILE
+    install_package nodejs 
 
 }
 
