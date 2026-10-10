@@ -8,8 +8,6 @@ app_name=mongodb
 # check root user
 # add user
 
-
-
 check_root
 
 # copy the repo file mongo.repo to etc/yum.repos.d/mongo.repo
