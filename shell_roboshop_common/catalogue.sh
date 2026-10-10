@@ -31,8 +31,8 @@ cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
 validate_command_execution $? "Copying catalogue systemd service file"  
 
 ### start and enable the catalogue service
-reload_service
-enable_start_service
+reload_service 
+enable_start_service catalogue
 
 
 ### install mongo shell client to connect to mongodb server
