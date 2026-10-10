@@ -45,6 +45,12 @@ enable_package_version(){
 }
 
 install_package(){
+    dnf install $1 -y &>> $LOG_FILE
+    PACKAGE=$1
+    validate_command_execution $? "Installing $PACKAGE "
+}
+
+install_package_module(){
     dnf module install $1 -y &>> $LOG_FILE
     PACKAGE=$1
     validate_command_execution $? "Installing $PACKAGE "

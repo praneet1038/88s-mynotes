@@ -11,7 +11,7 @@ app_name=mysql
 check_root
 
 install_package mysql-server
-enable_start_service mysql-server
+enable_start_service mysqld
 
 # set root password for mysql-server
 echo -e "Setting root password for mysql-server..."
