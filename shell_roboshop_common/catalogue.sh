@@ -16,13 +16,14 @@ MONGO_HOST=mongodb.jirawiser.online
 mkdir -p $LOG_FOLDER
 
 check_root
-create_app_user
+remove_app_content
 download_application
 extract_application
+install_dependencies_js
+create_app_user
 
 
-
-install_dependencies_nodejs
+install_nodejs_package
 
 ### setup systemctl catalogue service
 

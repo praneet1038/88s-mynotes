@@ -51,9 +51,10 @@ install_package(){
 }
 
 install_nodejs_package(){
-    disable_package $1
-    enable_package_version $1
-    validate_command_execution $? "Installing $1 package"
+    disable_package nodejs
+    enable_package_version nodejs:20
+    install_package nodejs
+    validate_command_execution $? "Installing nodejs package"
 
 }
 
@@ -84,7 +85,7 @@ extract_application(){
     validate_command_execution $? "Extracting $app_name application code"
 }
 
-install_dependencies_nodejs(){
+install_dependencies_js(){
     ### install dependencies
     cd /app
     validate_command_execution $? "Changing directory to /app"
