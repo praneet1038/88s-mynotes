@@ -21,7 +21,7 @@ cp $SCRIPT_DIR/shipping.service /etc/systemd/system/shipping.service
 
 # restart service
 reload_service
-enable_start_service
+enable_start_service shipping
 
 # Load the shipping schema to mysql-server
 # install mysql-client package if not installed
