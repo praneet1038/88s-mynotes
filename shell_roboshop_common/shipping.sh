@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script will setup user component for roboshop application. It will install nodejs 20 package, download and extract the application files and configure redis/mongodb for the user service.
+# This script will setup shipping component for roboshop application. It will install maven package, download and extract the application files and load schema, master-data and create db app user.
 
 
 source ./common.sh
@@ -37,7 +37,7 @@ validate_command_execution $? "Loading shipping schema to mysql-server"
 
 ## Create app user for shipping app to connect to mysql-server
 mysql -h $MYSQL_HOST -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql
-validate_command_execution $? "Creating app user for shipping app to connec to mysql-server" 
+validate_command_execution $? "Creating app user for shipping app to connect to mysql-server" 
 
 ## Load the shipping data to mysql-server
 mysql -h $MYSQL_HOST -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql
