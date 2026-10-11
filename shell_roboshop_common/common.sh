@@ -98,6 +98,13 @@ install_dependencies_js(){
     validate_command_execution $? "Installing catalogue application dependencies"
 }
 
+isntall_maven_dependencies_build(){
+    mvn clean package &>> $LOG_FILE
+    validate_command_execution $? "Building shipping application using maven"
+    mv target/shipping-1.0.jar shipping.jar &>> $LOG_FILE
+    validate_command_execution $? "Renaming shipping jar file"
+}
+
 reload_service(){
     systemctl daemon-reload &>> $LOG_FILE
 }
