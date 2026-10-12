@@ -2,9 +2,6 @@
 
 # This script will setup shipping component for roboshop application. It will install maven package, download and extract the application files and load schema, master-data and create db app user.
 
-MYSQL_HOST=mysql.jirawiser.online
-
-
 source ./common.sh
 app_name=shipping
 

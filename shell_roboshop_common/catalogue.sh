@@ -11,8 +11,6 @@
 source ./common.sh
 app_name=catalogue
 
-MONGO_HOST=mongodb.jirawiser.online
-
 mkdir -p $LOG_FOLDER
 
 check_root
