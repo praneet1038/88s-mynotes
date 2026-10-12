@@ -1,3 +1,3 @@
 aws ec2 describe-instances \
-  --query 'Reservations[].Instances[].[InstanceId,State.Name,InstanceType]' \
+  --query 'Reservations[].Instances[].[Name:Tags[?Key==`Name`]|[0].Value,InstanceId,State.Name,InstanceType]' \
   --output table
