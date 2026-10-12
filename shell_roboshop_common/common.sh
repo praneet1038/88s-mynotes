@@ -150,6 +150,6 @@ get_total_time(){
 }
 
 check_service_status(){
-    systemctl status $app_name
+    systemctl status $1
     netstat -lntp
 }
