@@ -125,6 +125,10 @@ enable_start_service(){
     validate_command_execution $? "Starting $1 service"
 }
 
+restart_service(){
+    systemctl restart $1 &>> $LOG_FILE
+    validate_command_execution $? "Restarting service"
+}
 get_total_time(){
     END_TIME=$(date +%s)
     TIME_TO_COMPLETE_PROCESS=$(( $END_TIME - $START_TIME ))
