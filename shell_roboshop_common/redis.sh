@@ -7,7 +7,7 @@ source ./common.sh
 mkdir -p $LOG_FOLDER
 
 check_root
-install_package redis:7
+install_package_module redis:7
 
 # update listen address from 127.0.0.1 to 0.0.0.0 permanently in redis config file
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf
