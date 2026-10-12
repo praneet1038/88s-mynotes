@@ -20,3 +20,7 @@ validate_command_execution $? "Updating protected mode in redis configuration fi
 enable_start_service redis
 
 get_total_time
+
+# output service status
+check_service_status
+

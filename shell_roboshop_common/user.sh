@@ -25,3 +25,7 @@ validate_command_execution $? "Copying user systemd service file"
 reload_service 
 enable_start_service user
 get_total_time
+
+# output service status
+check_service_status
+

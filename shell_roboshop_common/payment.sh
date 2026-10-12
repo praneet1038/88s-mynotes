@@ -33,3 +33,7 @@ validate_command_execution $? "Copying payment systemd service file to /etc/syst
 
 reload_service
 enable_start_service payment
+get_total_time
+
+# output service status
+check_service_status

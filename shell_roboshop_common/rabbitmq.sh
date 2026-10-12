@@ -34,3 +34,8 @@ validate_command_execution $? "Creating roboshop user in rabbitmq"
 
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
 validate_command_execution $? "Setting permissions for roboshop user in rabbitmq"
+
+get_total_time
+
+# output service status
+check_service_status

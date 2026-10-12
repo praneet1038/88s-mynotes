@@ -18,3 +18,9 @@ echo -e "Setting root password for mysql-server..."
 read -s -p "Enter new root password: " MYSQL_ROOT_PASSWORD
 mysql_secure_installation --set-root-pass $MYSQL_ROOT_PASSWORD
 validate_command_execution $? "Setting root password for mysql-server"
+
+get_total_time
+
+# output service status
+check_service_status
+

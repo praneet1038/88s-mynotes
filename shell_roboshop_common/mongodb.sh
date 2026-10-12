@@ -30,3 +30,7 @@ systemctl restart mongod
 validate_command_execution $? "Restarting mongodb service"
 
 get_total_time
+
+# output service status
+check_service_status
+

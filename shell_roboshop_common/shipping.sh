@@ -46,3 +46,9 @@ validate_command_execution $? "Loading shipping data to mysql-server"
 systemctl restart shipping &>> $LOG_FILE
 validate_command_execution $? "Restarting shipping service"
 
+get_total_time
+
+# output service status
+check_service_status
+
+

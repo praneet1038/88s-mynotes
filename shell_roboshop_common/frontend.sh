@@ -21,5 +21,8 @@ cp $SCRIPT_DIR/roboshop_nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
 validate_command_execution $? "Copying roboshop_nginx.conf file"  
 restart_service nginx
 
+get_total_time
 
+# output service status
+check_service_status
 

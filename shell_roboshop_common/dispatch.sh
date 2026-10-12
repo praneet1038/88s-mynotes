@@ -31,3 +31,9 @@ validate_command_execution $? "Copying dispatch.service file"
 reload_service
 enable_start_service $app_name
 validate_command_execution $? "Starting dispatch service"
+
+get_total_time
+
+# output service status
+check_service_status
+

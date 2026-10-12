@@ -25,3 +25,6 @@ validate_command_execution $? "Copying cart systemd service file"
 reload_service 
 enable_start_service cart
 get_total_time
+
+# output service status
+check_service_status
