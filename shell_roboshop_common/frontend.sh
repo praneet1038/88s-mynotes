@@ -4,14 +4,15 @@
 
 source ./common.sh
 app_name=frontend
+app_dir=/usr/share/nginx/html/
 
 mkdir -p $LOG_FOLDER
 
 check_root
 
-remove_app_content
+remove_app_dir_content
 download_application
-extract_application
+extract_app_to_dir
 disable_package nginx
 install_package_module nginx:1.24
 

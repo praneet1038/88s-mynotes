@@ -82,6 +82,12 @@ remove_app_content(){
     validate_command_execution $? "Deleting existing application code"
 }
 
+remove_app_dir_content(){
+    # delete default nginx content
+    rm -rf $app_dir* &>> $LOG_FILE
+    validate_command_execution $? "Deleting existing application code"
+}
+
 download_application(){
     curl -s -L -o /tmp/$app_name.zip  https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip &>> $LOG_FILE
 }
@@ -91,6 +97,14 @@ extract_application(){
     cd /app
     unzip /tmp/$app_name.zip &>> $LOG_FILE
     validate_command_execution $? "Extracting $app_name application code"
+}
+
+extract_app_to_dir(){
+    mkdir -p $app_dir
+    cd $app_dir
+    unzip /tmp/$app_name.zip -d $app_dir &>> $LOG_FILE
+    validate_command_execution $? "Extracting $app_name application"
+
 }
 
 install_dependencies_js(){
