@@ -5,13 +5,15 @@
 
 source ./common.sh
 app_name=cart
+app_dir=/app/
+
 
 mkdir -p $LOG_FOLDER
 
 check_root
 remove_app_content
 download_application
-extract_application
+extract_app_to_dir
 install_nodejs_package
 install_dependencies_js
 create_app_user
