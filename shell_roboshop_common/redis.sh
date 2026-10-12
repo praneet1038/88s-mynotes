@@ -22,5 +22,5 @@ enable_start_service redis
 get_total_time
 
 # output service status
-check_service_status
+check_service_status redis
 

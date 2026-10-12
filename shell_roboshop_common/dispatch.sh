@@ -35,5 +35,5 @@ validate_command_execution $? "Starting dispatch service"
 get_total_time
 
 # output service status
-check_service_status
+check_service_status dispatch
 

@@ -22,5 +22,5 @@ validate_command_execution $? "Setting root password for mysql-server"
 get_total_time
 
 # output service status
-check_service_status
+check_service_status mysqld
 
