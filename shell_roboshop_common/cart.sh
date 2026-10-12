@@ -27,4 +27,4 @@ enable_start_service cart
 get_total_time
 
 # output service status
-check_service_status
+check_service_status cart
