@@ -7,10 +7,10 @@
 # delete all files older than 14 days
 LOG_DIR=/logdir
 
-if [ !-d $LOG_DIR ]; then
+if [ ! -d $LOG_DIR ]; then
     echo "$LOG_DIR doesnot exist"
 else
-    files_to_delete = find $LOG_DIR -f -name "*.log" -mtime +14
+    files_to_delete = find $LOG_DIR -type f -name '*.log' -mtime +14
     echo $files_to_delete
     echo "While counter : "
     while [ $counter -le 5 ]
