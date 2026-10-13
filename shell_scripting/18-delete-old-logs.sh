@@ -22,7 +22,8 @@ else
 
     while IFS= read -r filepath; 
     do
-        echo "$filepath"
+        echo "delete $filepath"
+        rm $filepath
     done <<< $FILES_TO_DEL
 fi
 
