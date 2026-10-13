@@ -5,7 +5,7 @@
 # pseudo code
 # if logdirectory exists
 # delete all files older than 14 days
-LOG_DIR = "logdir"
+LOG_DIR=/logdir
 
 if [ !-d $LOG_DIR ]; then
     echo "$LOG_DIR doesnot exist"
@@ -18,5 +18,6 @@ else
         echo $counter
         counter=$((counter + 1)) 
     done
+fi
 
 
