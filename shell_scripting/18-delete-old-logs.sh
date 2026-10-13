@@ -20,10 +20,10 @@ else
         counter=$((counter + 1)) 
     done
 
-    while IFS= read -r line; 
+    while IFS= read -r filepath; 
     do
-        echo "$line"
-    done < 12-log.sh
+        echo "$filepath"
+    done <<< $FILES_TO_DEL
 fi
 
 
