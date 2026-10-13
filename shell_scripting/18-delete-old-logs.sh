@@ -33,6 +33,7 @@ else
         if [ $filepath ]; then
             rm $filepath
             echo "Deleted $filepath"
+        fi
     done <<< $FILES_TO_DEL
 fi
 
