@@ -13,6 +13,7 @@ else
     FILES_TO_DEL=$(find $LOG_DIR -type f -name '*.log' -mtime +14)
     echo $FILES_TO_DEL
     echo "While counter : "
+    counter=0
     while [ $counter -le 5 ]
     do
         echo $counter
