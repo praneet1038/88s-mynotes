@@ -10,7 +10,7 @@ LOG_DIR=/logdir
 if [ ! -d $LOG_DIR ]; then
     echo "$LOG_DIR doesnot exist"
 else
-    FILES_TO_DEL=find $LOG_DIR -type f -name '*.log' -mtime +14
+    FILES_TO_DEL=$(find $LOG_DIR -type f -name '*.log' -mtime +14)
     echo $FILES_TO_DEL
     echo "While counter : "
     while [ $counter -le 5 ]
