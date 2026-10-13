@@ -19,6 +19,11 @@ else
         echo $counter
         counter=$((counter + 1)) 
     done
+
+    while IFS=read -r line; do
+    do
+        echo "$line"
+    done < 12-log.sh
 fi
 
 
