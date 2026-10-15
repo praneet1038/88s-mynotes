@@ -4,13 +4,14 @@
 
 source ./common.sh
 app_name=shipping
+app_dir=/app/
 
 mkdir -p $LOG_FOLDER
 
 check_root
-remove_app_content
+remove_app_dir_content
 download_application
-extract_application
+extract_app_to_dir
 install_package maven
 isntall_maven_dependencies_build
 create_app_user
