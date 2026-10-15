@@ -13,11 +13,8 @@ source=$1
 target=$2
 DAYS=${3:-14} # set default value 14
 # find files older than days to delete
-# if files zip is successful then delete files from source
  
-echo "$source;$target;$DAYS"
 timestamp=$(date +%F-%H-%M-%S)
-
 
 get_files_to_delete(){  
     # find files older than file_timestamp days
@@ -34,9 +31,18 @@ get_files_to_delete(){
 
 }
 
+USAGE(){
+    echo -e "$Y USAGE sudo backup...SOURCE...DEST$N\nBackup SOURCE TO DEST"
+}
+
+if [ $# -lt 2 ]; then
+    USAGE
+    exit 1
+fi
+
 # echo $(find $source -type f -name '*.log' -mtime +14)
 get_files_to_delete
-if [ $? -eq1 ]; then
+if [ $? -eq 1 ]; then
     echo "Exiting..."
     exit 1
 fi
@@ -44,4 +50,11 @@ echo "$timestamp"
 filename="$timestamp.tar"
 echo "$filename"
 tar -cf $filename $(find $source -type f -name '*.log' -mtime +14)
+tar -cf $filename $get_files_to_delete
+
+# if files zip is successful then delete files from source
+if [ $? -eq 0 ]; then
+    rm -f $get_files_to_delete
+    exit 0
+fi
 
