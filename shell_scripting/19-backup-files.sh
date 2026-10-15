@@ -41,7 +41,7 @@ if [ $? -eq1 ]; then
     exit 1
 fi
 echo "$timestamp"
-filename="$source-$timestamp.tar"
+filename="$timestamp.tar"
 echo "$filename"
 tar -cf $filename $(find $source -type f -name '*.log' -mtime +14)
 
