@@ -11,3 +11,4 @@ pointers in C
 - print and append to log file
 `| tee -a output.txt`
 
+`trouch` 
