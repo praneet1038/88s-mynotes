@@ -33,5 +33,44 @@ SetUp
 `ansible roboshop -i inventory.ini  --list-hosts`
 `ansible ungrouped -i inventory.ini  --list-hosts`
 `ansible-inventory -i inventory.ini --graph`
+## playbook
+builtin modules & community modules
+
+### shell vs command module differences
+
+### declaring variables 
+- Play level variables 
+- Task level variables 
+- Prompt variables
+- Argument variables
+
+### datatypes
+- string
+- number
+- list
+- dict
+- map
+
+### loops
+
+### conditions
+
+
+### Builtin functions
+- print message
+- split string to list
+- map to list
+- list to map
+- read file 
+- json to yaml 
+- yaml to json
+- filters
+
+### error handling
+
+
+
+
+
 
 

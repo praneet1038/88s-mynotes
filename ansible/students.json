@@ -1,0 +1,11 @@
+{
+    "student":"full name",
+    "details":
+        {
+            "firstname": "JR",
+            "lastname": "B",
+            "address": "Netherlands",
+            "phone": 12345678,
+            "email": "new@gmail.com"
+        }
+}
