@@ -32,5 +32,6 @@ SetUp
 `ansible frontend -i inventory.ini  --list-hosts`
 `ansible roboshop -i inventory.ini  --list-hosts`
 `ansible ungrouped -i inventory.ini  --list-hosts`
+`ansible-inventory -i inventory.ini --graph`
 
 
