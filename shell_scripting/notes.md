@@ -12,3 +12,8 @@ pointers in C
 `| tee -a output.txt`
 
 `trouch` 
+
+- TO DO 
+- disk utilization
+- implement backup script
+- mail template 
