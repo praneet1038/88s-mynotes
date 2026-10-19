@@ -36,6 +36,9 @@ SetUp
 ## playbook
 builtin modules & community modules
 
+### commands to run playbooks
+`ansible-playbook -i inventory.ini 10-playbook.yaml `
+
 ### shell vs command module differences
 
 ### declaring variables 
