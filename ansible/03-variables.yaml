@@ -12,4 +12,4 @@
       duration: "150"
       trainer: "Praneeth kumar reddy"
      ansible.builtin.debug:
-      msg: "This is a {{ course }} course by {{ Trainer }} for {{ 140 }} hrs"
+      msg: "This is a {{ course }} course by {{ trainer }} for {{ 140 }} hrs"
