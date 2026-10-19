@@ -1,15 +1,12 @@
 - name: variables at levels
   hosts: local
   connection: local
-  vars: 
-   course: "DevOps"
-   duration: "140"
-   Trainer: "Sivareddy"
+  vars_files:
+   - course.yaml
   tasks:
    - name: playbook variable
      vars: 
-      course: "Ansible"
+      COURSE: "Ansible"
       duration: "150"
-      trainer: "Praneeth kumar reddy"
      ansible.builtin.debug:
-      msg: "This is a {{ course }} course by {{ trainer }} for {{ 140 }} hrs"
+      msg: "This is a {{ COURSE }} course by {{ TRAINER }} for {{ duration }} hrs"
