@@ -41,6 +41,8 @@ builtin modules & community modules
 
 Note: above command executed as root installs nginx without requiring user credentials. 
 
+![alt text](image.png)
+
 ### shell vs command module differences
 
 ### declaring variables 
