@@ -7,5 +7,9 @@
    Trainer: "Sivareddy"
   tasks:
    - name: playbook variable
+     vars: 
+      course: "Ansible"
+      duration: "150"
+      trainer: "Praneeth kumar reddy"
      ansible.builtin.debug:
       msg: "This is a {{ course }} by {{ Trainer }} for {{ 140 }} hrs"
