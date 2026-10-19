@@ -37,7 +37,9 @@ SetUp
 builtin modules & community modules
 
 ### commands to run playbooks
-`ansible-playbook -i inventory.ini 10-playbook.yaml `
+`ansible-playbook -i inventory.ini 10-playbook.yaml`
+
+Note: above command executed as root installs nginx without requiring user credentials. 
 
 ### shell vs command module differences
 
