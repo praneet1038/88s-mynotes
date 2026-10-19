@@ -3,7 +3,11 @@
   tasks:
    - name: ping web server
      ansible.builtin.ping:
+   - name: install nginx
+     ansible.builtin.package:
+      name: nginx
+      state: present
    - name: print message
      ansible.builtin.debug:
-       msg: "Hello world"
+       msg: "Hello Nginx world"
 
