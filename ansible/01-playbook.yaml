@@ -2,15 +2,7 @@
   hosts: node1
   tasks:
    - name: ping web server
-     ansible.builtin.ping:
-   - name: install nginx
-     ansible.builtin.package:
-      name: nginx
-      state: absent
-   - name: start nginx service
-     ansible.builtin.service:
-      name: nginx
-      state: started
+     ansible.builtin.ping:   
    - name: print message
      ansible.builtin.debug:
        msg: "Start Nginx world"

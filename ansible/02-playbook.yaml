@@ -1,0 +1,11 @@
+- name: install packages
+  hosts: node1
+  tasks:
+   - name: install nginx
+     ansible.builtin.package:
+      name: nginx
+      state: absent
+   - name: start nginx service
+     ansible.builtin.service:
+      name: nginx
+      state: started
