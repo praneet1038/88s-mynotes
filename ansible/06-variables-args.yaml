@@ -6,8 +6,9 @@
   vars_files:
     - course.yaml
   vars_prompt:
-    - COURSE: Enter course name
-    - password: Enter password
+    - name: COURSE
+      prompt: Enter username
+      private: false
   tasks:
    - name: Enter user credentials
      vars: 
