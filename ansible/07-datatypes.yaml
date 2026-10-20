@@ -19,5 +19,5 @@
        Program: {{ PROGRAM }} 
        Duration: {{ DURATION }} hrs
        TOPICS: {{ TOPIC }} 
-       Trainer: {{ TRAINER }}
+       Trainer: {{ DETAILS }}
        Live: {{ IS_LIVE }}
