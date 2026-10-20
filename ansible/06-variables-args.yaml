@@ -3,8 +3,8 @@
   connection: local
   vars: 
     - COURSE: Ansible from Play
-  vars_file:
-    course.yaml
+  vars_files:
+    - course.yaml
   vars_prompt:
     - COURSE: Enter course name
     - password: Enter password
