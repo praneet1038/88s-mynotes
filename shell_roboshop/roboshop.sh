@@ -1,8 +1,7 @@
 #!/bin/bash
 
 SG_ID="sg-00e273e797ad748e9"
-AMI_ID="ami-0055977a6e828a4f4
-" # Redhat-9-DevOps-practice (joinDevOps AMI)
+AMI_ID="ami-0055977a6e828a4f4" # Redhat-9-DevOps-practice (joinDevOps AMI)
 HOSTED_ZONE_ID="Z10383363R1G3CD5ON5XC" # jirawiser.online
 DOMAIN_NAME="jirawiser.online"
 
