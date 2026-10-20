@@ -3,8 +3,21 @@
   connection: local
   vars: 
    IS_LIVE: false
+  vars_prompt:
+   - name: sessions
+     prompt: How many sessions did you attend
+     private: false
   tasks:
    - name: condtions
      ansible.builtin.debug:
       msg: "Yes, it is alive"
      when: IS_LIVE
+   - name: comparison
+     ansible.builtin.debug:
+      msg: "Its greater"
+     when: sessions > 5
+   - name: comparison
+     ansible.builtin.debug:
+      msg: "Not enough sessions"
+     when: sessions < 5
+
