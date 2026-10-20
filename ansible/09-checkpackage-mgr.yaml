@@ -4,7 +4,7 @@
   tasks:
   - name: Read ansible facts
     ansible.builtin.debug:
-     msg: {{ ansible_facts }}
+     msg: "{{ ansible_facts }}"
   - name: Check OS
     ansible.builtin.debug:
      msg: "This is RedHat"
