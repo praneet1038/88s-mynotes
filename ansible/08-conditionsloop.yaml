@@ -15,9 +15,9 @@
    - name: comparison
      ansible.builtin.debug:
       msg: "Its greater"
-     when: sessions > 5
+     when: sessions | int > 5
    - name: comparison
      ansible.builtin.debug:
       msg: "Not enough sessions"
-     when: sessions < 5
+     when: sessions | int < 5
 
