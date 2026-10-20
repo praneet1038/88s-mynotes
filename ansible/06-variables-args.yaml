@@ -1,7 +1,16 @@
-- name: variable as argument
+- name: variable order of preference
   hosts: local
   connection: local
+  vars: 
+    - COURSE: Ansible from Play
+  vars_file:
+    course.yaml
+  vars_prompt:
+    - COURSE: Enter course name
+    - password: Enter password
   tasks:
    - name: Enter user credentials
+     vars: 
+      COURSE: Ansible from task
      ansible.builtin.debug:
       msg: "This is {{ COURSE }}"
