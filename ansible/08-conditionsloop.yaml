@@ -1,0 +1,11 @@
+- name: Iterate when condtion is true
+  hosts: local
+  connections: local
+  vars: 
+   IS_LIVE: true
+  tasks:
+   - name: condtions
+     ansible.builtin.debug:
+      msg: "Yes, it is alive"
+     when: IS_LIVE
+     
