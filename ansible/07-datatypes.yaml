@@ -1,0 +1,23 @@
+- name: Datatypes in yaml
+  hosts: local
+  connection: local
+  vars: 
+   PROGRAM: "DEVOPS"
+   DURATION: 140
+   IS_LIVE: true
+   DETAILS:
+    MONTHS: 4
+    TRAINER: PK 
+   TOPIC: 
+    - LINUX
+    - SHELL
+    - ANSIBLE
+   tasks:
+    - name: print variables
+      ansible.builtin.debug: 
+       msg: |
+        Program: {{ PROGRAM }} 
+        Duration: {{ DURATION }} hrs
+        TOPICS: {{ TOPIC }} 
+        Trainer: {{ TRAINER }}
+        Live: {{ IS_LIVE }}
