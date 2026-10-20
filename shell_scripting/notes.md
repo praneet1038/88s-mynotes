@@ -11,3 +11,9 @@ pointers in C
 - print and append to log file
 `| tee -a output.txt`
 
+`trouch` 
+
+- TO DO 
+- disk utilization
+- implement backup script
+- mail template 
