@@ -1,4 +1,4 @@
-- name: variables from user prompt
+- name: variables from inventory file
   hosts: local
   connection: local
   tasks:

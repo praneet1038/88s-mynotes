@@ -46,10 +46,12 @@ Note: above command executed as root installs nginx without requiring user crede
 ### shell vs command module differences
 
 ### declaring variables 
-- Play level variables 
-- Task level variables 
-- Prompt variables
 - Argument variables
+- Task level variables 
+- vars_file
+- Prompt variables
+- Play level variables 
+- Inventory
 
 ### datatypes
 - string
