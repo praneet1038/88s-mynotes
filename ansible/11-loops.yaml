@@ -9,3 +9,11 @@
     - one
     - two 
     - three
+  - name: install packages
+    ansible.builtin.package:
+     name: "{{ item }}"
+     state: present
+    loop:
+    - mysql
+    - nginx
+    - zip
