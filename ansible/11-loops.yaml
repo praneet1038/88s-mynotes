@@ -13,7 +13,17 @@
     ansible.builtin.package:
      name: "{{ item }}"
      state: present
+    when: false
     loop:
     - mysql
     - nginx
     - zip
+  - name: install packages
+    ansible.builtin.package:
+     name: "{{ item }}"
+     state: present
+    loop:
+    - {name: "mysql", state: "absent"}
+    - {name: "nginx", state: "present"}
+    - {name: "zip", state: "absent"}
+    
