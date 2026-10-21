@@ -13,9 +13,9 @@
   - name: dictionary to list
     vars:
      tags:
-      Name: ansible
-      project: roboshop
-      component: catalogue
+       Name: ansible
+       project: roboshop
+       component: catalogue
     ansible.builtin.debug: 
      msg: "{{ tags | dict2items }}"
    
