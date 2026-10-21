@@ -46,7 +46,7 @@ Note: above command executed as root installs nginx without requiring user crede
 ### shell vs command module differences
 
 ### declaring variables 
-- Argument variables
+- Argument variables (enclose arg=value in single quotes)
 - Task level variables 
 - vars_file
 - Prompt variables
@@ -56,13 +56,17 @@ Note: above command executed as root installs nginx without requiring user crede
 ### datatypes
 - string
 - number
+- boolean
 - list
 - dict
 - map
 
 ### loops
+loop
+item
 
 ### conditions
+when
 
 
 ### Builtin functions
