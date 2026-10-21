@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    NUMBERS: one, two, three
+    NUMBERS: One, Two, Three
   tasks:
   - name: default value
     ansible.builtin.debug: 
@@ -46,4 +46,7 @@
   - name: uppercase
     ansible.builtin.debug: 
      msg: "{{ NUMBERS | upper}}"
+  - name: lowercase
+    ansible.builtin.debug: 
+     msg: "{{ NUMBERS | lower}}"
    
