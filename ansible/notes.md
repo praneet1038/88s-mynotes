@@ -78,8 +78,15 @@ when
 - json to yaml 
 - yaml to json
 - filters
-
+  - split
+  - list to map/dict
+  - map to list
+  - upper/lower case
+  - validate ip address
+  
 ### error handling
+- ignore_errors
+  
 
 
 
