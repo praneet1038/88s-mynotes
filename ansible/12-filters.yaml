@@ -37,4 +37,10 @@
         ]
     ansible.builtin.debug: 
      msg: "{{ profilelist | itemstodict }}"
+  - name: read yaml
+    ansible.builtin.set_fact: 
+     var_yaml: "{{ lookup('file','students.yaml')}}"
+  - name: convert yaml to json
+    ansible.builtin.debug: 
+     msg: "{{ var_yaml | to_json}}"
    
