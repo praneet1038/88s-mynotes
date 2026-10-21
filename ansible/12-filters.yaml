@@ -18,4 +18,23 @@
        component: "catalogue"
     ansible.builtin.debug: 
      msg: "{{ profile | dict2items }}"
+  - name:  list to dictionary
+    vars:
+     profilelist:
+       [
+        {
+            "key": "name",
+            "value": "ansible"
+        },
+        {
+            "key": "project",
+            "value": "roboshop"
+        },
+        {
+            "key": "component",
+            "value": "catalogue"
+        }
+        ]
+    ansible.builtin.debug: 
+     msg: "{{ profilelist | itemstodict }}"
    
