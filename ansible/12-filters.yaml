@@ -36,7 +36,7 @@
         }
         ]
     ansible.builtin.debug: 
-     msg: "{{ profilelist | itemstodict }}"
+     msg: "{{ profilelist | items2dict }}"
   - name: read yaml
     ansible.builtin.set_fact: 
      var_yaml: "{{ lookup('file','students.yaml')}}"
