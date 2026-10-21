@@ -1,13 +1,13 @@
 - name: demo filters
   hosts: local
   connection: local
+  vars:
+    NUMBERS: one, two, three
   tasks:
   - name: default value
     ansible.builtin.debug: 
      msg: "Hi, {{ GOOD | default('Good Morning')}}"
   - name: convert string to list
-    vars:
-     NUMBERS: one, two, three
     ansible.builtin.debug: 
      msg: "{{ NUMBERS | split(',')}}"
   - name: dictionary to list
