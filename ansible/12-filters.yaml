@@ -43,4 +43,7 @@
   - name: convert yaml to json
     ansible.builtin.debug: 
      msg: "{{ var_yaml | to_json}}"
+  - name: uppercase
+    ansible.builtin.debug: 
+     msg: "{{ NUMBERS | upper}}"
    
