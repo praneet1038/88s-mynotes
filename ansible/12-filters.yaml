@@ -10,12 +10,12 @@
      NUMBERS: one, two, three
     ansible.builtin.debug: 
      msg: "{{ NUMBERS | split(',')}}"
-  # - name: dictionary to list
-  #   vars:
-  #    profile:
-  #      name: "ansible"
-  #      project: "roboshop"
-  #      component: "catalogue"
-  #   ansible.builtin.debug: 
-  #    msg: "{{ profile | dict2items }}"
+  - name: dictionary to list
+    vars:
+     profile:
+       name: "ansible"
+       project: "roboshop"
+       component: "catalogue"
+    ansible.builtin.debug: 
+     msg: "{{ profile | dict2items }}"
    
