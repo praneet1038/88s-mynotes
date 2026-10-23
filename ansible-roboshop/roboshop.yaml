@@ -5,6 +5,7 @@
     sg_id: sg-00e273e797ad748e9
     img_id: ami-0055977a6e828a4f4
     env: "dev"
+    domain: "jirawiser.online"
     instances:
       - mongodb
       - catalogue
@@ -22,9 +23,6 @@
           Environment: "{{ env }}"
       loop: "{{ instances }}"
       register: ec2_output
-    # - name: print output
-    #   ansible.builtin.debug:
-    #     msg: "{{ ec2_output.results[0].instances[0]. }}"
     - name: get private ip
       ansible.builtin.debug:
         msg: "{{ item.instances[0].private_ip_address }}"
@@ -33,10 +31,11 @@
     - name: Add mongodb.jirawiser.online as an A record with 1 IP and wait until the changes have been replicated
       amazon.aws.route53:
         state: present
-        zone: jirawiser.online
-        record: mongodb.jirawiser.online
+        zone: "{{ domain }}"
+        record: "{{ item.item }}.{{ domain }}"
         type: A
         ttl: 1
-        value: "{{ item }}"
+        value: "{{ item.instances[0].private_ip_address }}"
         wait: true
-      when: 1==2 
+      loop: "{{ ec2_output.results }}"
+      
