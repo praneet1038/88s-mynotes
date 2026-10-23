@@ -11,9 +11,9 @@
   tasks:
     - name: create ec2
       amazon.aws.ec2_instance:
-        security_group: {{ sg_id }}
+        security_group: "{{ sg_id }}"
         instance_type: "t3.micro"
-        image_id: {{ img_id }}
+        image_id: "{{ img_id }}"
         name: "{{ item }} - {{ env }}"
         tags:
           Name: "{{ item }} - {{ env }}"
