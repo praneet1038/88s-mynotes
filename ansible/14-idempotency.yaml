@@ -1,0 +1,8 @@
+- name: demo error handling
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: add user
+    ansible.builtin.user:
+      name: roboshop
