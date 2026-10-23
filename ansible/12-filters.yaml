@@ -1,0 +1,52 @@
+- name: demo filters
+  hosts: local
+  connection: local
+  vars:
+    NUMBERS: One, Two, Three
+  tasks:
+  - name: default value
+    ansible.builtin.debug: 
+     msg: "Hi, {{ GOOD | default('Good Morning')}}"
+  - name: convert string to list
+    ansible.builtin.debug: 
+     msg: "{{ NUMBERS | split(',')}}"
+  - name: dictionary to list
+    vars:
+     profile:
+       name: "ansible"
+       project: "roboshop"
+       component: "catalogue"
+    ansible.builtin.debug: 
+     msg: "{{ profile | dict2items }}"
+  - name:  list to dictionary
+    vars:
+     profilelist:
+       [
+        {
+            "key": "name",
+            "value": "ansible"
+        },
+        {
+            "key": "project",
+            "value": "roboshop"
+        },
+        {
+            "key": "component",
+            "value": "catalogue"
+        }
+        ]
+    ansible.builtin.debug: 
+     msg: "{{ profilelist | items2dict }}"
+  - name: read yaml
+    ansible.builtin.set_fact: 
+     var_yaml: "{{ lookup('file','students.yaml')}}"
+  - name: convert yaml to json
+    ansible.builtin.debug: 
+     msg: "{{ var_yaml | to_json}}"
+  - name: uppercase
+    ansible.builtin.debug: 
+     msg: "{{ NUMBERS | upper}}"
+  - name: lowercase
+    ansible.builtin.debug: 
+     msg: "{{ NUMBERS | lower}}"
+   

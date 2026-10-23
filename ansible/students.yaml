@@ -1,0 +1,28 @@
+- name: "JRB" 
+  mobile: 1234567890
+  dob: "01-01-1980"
+  address:
+  - Housenumber: 104
+    street: Main St
+    zip: 48197
+    state: MI
+    country: USA
+  - Housenumber: 104
+    street: Station St
+    zip: 48198
+    state: GA
+    country: USA
+- name: "PRB" 
+  mobile: 0987654321
+  dob: "02-03-1981"
+  address:
+  - Housenumber: 101
+    street: Main St
+    zip: 48197
+    state: MI
+    country: USA
+  - Housenumber: 104
+    street: Station St
+    zip: 48198
+    state: GA
+    country: USA

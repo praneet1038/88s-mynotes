@@ -1,0 +1,9 @@
+- name: ping the server
+  hosts: node1
+  tasks:
+   - name: ping web server
+     ansible.builtin.ping:   
+   - name: print message
+     ansible.builtin.debug:
+       msg: "Start Nginx world"
+
