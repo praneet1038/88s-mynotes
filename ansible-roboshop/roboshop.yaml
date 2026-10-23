@@ -1,9 +1,10 @@
 - name: create ec2 instances & r53 records
-  hosts: local
+  hosts: all
   connection: local
   vars:
     sg_id: "sg-00e273e797ad748e9"
     img_id: "ami-0055977a6e828a4f4"
+    env: "dev"
     instances:
       - mongodb
       - catalogue
@@ -13,7 +14,12 @@
         security_group: sg_id
         instance_type: "t3.micro"
         image_id: img_id
-        name: {{ item }}
+        name: "{{ item }} - {{ env }}"
+        tags:
+          Name: "{{ item }} - {{ env }}"
+          Project: "roboshop"
+          Component: "{{ item }}"
+          Environment: "{{ env }}"
       loop: {{ instances }}
       register: ec2_output
     - name: print output
