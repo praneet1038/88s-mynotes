@@ -66,7 +66,7 @@ loop
 item
 
 ### conditions
-when
+when <condition>
 
 
 ### Builtin functions
@@ -87,6 +87,7 @@ when
 ### error handling
 - ignore_errors
   
+
 
 
 
