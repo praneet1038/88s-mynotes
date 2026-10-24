@@ -1,5 +1,6 @@
 - name: mongodb module
   hosts: mongodb
+  become: yes
   tasks:
     - name: copy repo file to vim /etc/yum.repos.d/mongo.repo
       ansible.builtin.copy:
