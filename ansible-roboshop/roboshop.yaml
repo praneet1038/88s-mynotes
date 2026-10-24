@@ -25,7 +25,7 @@
       register: ec2_output
     - name: get private ip
       ansible.builtin.debug:
-        msg: "{{ item.instances[0].private_ip_address ; item.instances[0].public_ip_address }}"
+        msg: "{{ item.instances[0].private_ip_address }} : {{ item.instances[0].public_ip_address }}"
       loop: "{{ ec2_output.results }}"
     
     - name: Add A records and wait until the changes have been replicated
