@@ -9,7 +9,9 @@ Logically organized list of managed nodes
 roboshop.yaml
 
 ### install mongodb
+mongodb.yaml
 
 ### install catalogue
+catalgoue.yaml
 
 
