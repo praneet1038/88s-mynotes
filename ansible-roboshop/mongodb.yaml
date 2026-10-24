@@ -1,0 +1,15 @@
+- name: mongodb module
+  hosts: mongodb
+  tasks:
+    - name: copy repo file to vim /etc/yum.repos.d/mongo.repo
+      ansible.builtin.copy:
+        src: mongo.repo
+        dest: /etc/yum.repos.d/mongo.repo
+    # - name: dnf install mongodb-org
+    # - name: systemctl enable mongod service
+    # - name: systemctl start mongod service
+    # - name: update ip address to 0.0.0.0
+    # - name: systemctl restart mongod service
+
+
+  
