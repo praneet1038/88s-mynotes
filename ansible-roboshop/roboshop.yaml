@@ -1,0 +1,42 @@
+- name: create ec2 instances & r53 records
+  hosts: all
+  connection: local
+  vars:
+    sg_id: sg-00e273e797ad748e9
+    img_id: ami-0055977a6e828a4f4
+    env: "dev"
+    domain: "jirawiser.online"
+    instances:
+      - mongodb
+      - catalogue
+  tasks:
+    - name: create ec2 instances
+      amazon.aws.ec2_instance:
+        security_group: "{{ sg_id }}"
+        instance_type: "t3.micro"
+        image_id: "{{ img_id }}"
+        name: "{{ item }}-{{ env }}"
+        tags:
+          Name: "{{ item }}-{{ env }}"
+          Project: "roboshop"
+          Component: "{{ item }}"
+          Environment: "{{ env }}"
+      loop: "{{ instances }}"
+      register: ec2_output
+    - name: get private ip
+      ansible.builtin.debug:
+        msg: "{{ item.instances[0].private_ip_address }} : {{ item.instances[0].public_ip_address }}"
+      loop: "{{ ec2_output.results }}"
+    
+    - name: Add A records and wait until the changes have been replicated
+      amazon.aws.route53:
+        state: present
+        zone: "{{ domain }}"
+        record: "{{ item.item }}-{{ env }}.{{ domain }}"
+        type: A
+        ttl: 1
+        value: "{{ item.instances[0].private_ip_address }}"
+        wait: true
+        overwrite: true
+      loop: "{{ ec2_output.results }}"
+      
