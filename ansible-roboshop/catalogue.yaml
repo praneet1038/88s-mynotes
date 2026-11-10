@@ -1,0 +1,52 @@
+- name: catalogue module
+  hosts: catalogue
+  become: yes
+  tasks:
+    # disable nodejs
+    - name: install nodejs 20
+      ansible.builtin.dnf:
+        name: nodejs:20
+        state: present
+    # - name: add application user
+    - name: add roboshop user
+      ansible.builtin.user:
+        name: roboshop
+        comment: roboshop system user
+        shell: /sbin/nologin
+        home: /app
+    
+    # delete existing code files in /app if any
+    - name: Remove file (delete file)
+      ansible.builtin.file:
+        path: /app
+        state: absent
+
+    # - name: download a remote file and unarchive a file
+    - name: Unarchive a file that needs to be downloaded (added in 2.0)
+      ansible.builtin.unarchive:
+        src: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+        dest: /app
+        remote_src: yes
+
+    # install dependencies
+    
+    # setup systemctl catalogue service
+    - name: copy catalogue.service file to /etc/systemd/system/catalogue.service
+      ansible.builtin.copy:
+        src: catalogue.service
+        dest: /etc/systemd/system/catalogue.service
+
+    # start and enable the catalogue service
+    - name: enable catalogue
+      ansible.builtin.service:
+        name: catalogue
+        state: started
+        enabled: yes
+    # install mongo shell client to connect to mongodb server
+    # load the catalogue schema to mongodb server
+    # check if database(catalogue) is already created or not, if not then load the schema to mongodb server
+    
+   
+
+
+  
