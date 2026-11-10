@@ -19,3 +19,6 @@ ansible-playbook -i localhost, roboshop.yaml
 # describe all aws ec2 instances to confirm
 aws-ec2-desall 
 
+# deploy mongodb
+ansible-playbook -i inventory.ini mongodb.yaml
+
