@@ -5,20 +5,19 @@
 # install aws cli
 # To install the AWS CLI, run the following command.
 
-validate_command_execution() {
+validate_awscli_installation() {
     if [ $1 -eq 0 ]; then
-        echo -e "$(date +%c) $2 .... SUCCESS" 
+        echo -e "$(date +%c) $2 .... installed" 
     else
-        echo -e "$(date +%c) $2 .... FAILED" 
-        exit 1
+        echo -e "$(date +%c) $2 .... not installed" 
+        curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
     fi
 }
 
 install_awscli()
 {
     aws --version
-    validate_command_execution $? "aws installation "
-    curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
+    validate_command_execution $? "awscli"
 }
 
 set_aws_commands(){
