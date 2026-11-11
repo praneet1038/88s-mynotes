@@ -6,6 +6,7 @@
     img_id: ami-0055977a6e828a4f4
     env: "dev"
     domain: "jirawiser.online"
+    action: "create"
     instances:
       - mongodb
       - catalogue
@@ -23,12 +24,14 @@
           Environment: "{{ env }}"
       loop: "{{ instances }}"
       register: ec2_output
+      action: "create"
+
     - name: get private ip
       ansible.builtin.debug:
         msg: "{{ item.instances[0].private_ip_address }} : {{ item.instances[0].public_ip_address }}"
       loop: "{{ ec2_output.results }}"
     
-    - name: Add A records and wait until the changes have been replicated
+    - name: Add private IP A records and wait until the changes have been replicated
       amazon.aws.route53:
         state: present
         zone: "{{ domain }}"
@@ -39,4 +42,33 @@
         wait: true
         overwrite: true
       loop: "{{ ec2_output.results }}"
-      
+      when:
+        - item.item != "frontend"
+        - action == "create"
+    
+    - name: Add public IP A records and wait until the changes have been replicated
+      amazon.aws.route53:
+        state: present
+        zone: "{{ domain }}"
+        record: "{{ item.item }}-{{ env }}.{{ domain }}"
+        type: A
+        ttl: 1
+        value: "{{ item.instances[0].public_ip_address }}"
+        wait: true
+        overwrite: true
+      loop: "{{ ec2_output.results }}"
+      when:
+        - item.item == "frontend"
+        - action == "create"
+
+    
+    - name: delete ec2 instances
+      amazon.aws.ec2_instance:
+        state: present
+        name: "{{ item }}-{{ env }}"
+      loop: "{{ instances }}"
+      register: ec2_output
+      when: 
+        - action == "create"
+
+    - name: destroy r53 routes

@@ -17,7 +17,7 @@ validate_awscli_installation() {
 
 install_awscli()
 {
-    validate_command_execution "awscli"
+    validate_awscli_installation "awscli"
 }
 
 set_aws_commands(){

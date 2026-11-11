@@ -1,5 +1,6 @@
 #!/bin/bash
 # echo all commands before exec
+# https://raw.githubusercontent.com/praneet1038/88s-mynotes/refs/heads/ansible-roboshop/standard-env-setup/initial-setup.sh
 set -x 
 set -e
 
