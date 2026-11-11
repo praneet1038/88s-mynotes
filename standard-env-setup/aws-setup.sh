@@ -21,8 +21,6 @@ install_awscli()
     curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
 }
 
-
-
 set_aws_commands(){
   # make aws scripts shell commands
     cd ../aws_scripts
@@ -36,4 +34,4 @@ set_aws_commands(){
 
 
 # describe all aws ec2 instances to confirm
-aws-ec2-desall 
+# aws-ec2-desall 
