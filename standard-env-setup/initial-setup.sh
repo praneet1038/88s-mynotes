@@ -16,7 +16,7 @@ pip install botocore boto3
 
 
 # make aws scripts shell commands
-cd 88s-mynotes/aws_scripts
+cd ../aws_scripts
 for f in *; do 
     echo "$f"
     cp $f "/usr/bin/${f%.*}"
