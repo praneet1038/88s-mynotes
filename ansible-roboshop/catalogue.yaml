@@ -14,12 +14,12 @@
         comment: roboshop system user
         shell: /sbin/nologin
         home: /app
-    
-    # delete existing code files in /app if any
-    - name: Remove file (delete file)
+          
+    # create app directory
+    - name: create app directory
       ansible.builtin.file:
         path: /app
-        state: absent
+        state: directory
 
     # - name: download a remote file and unarchive a file
     - name: Unarchive a file that needs to be downloaded (added in 2.0)
