@@ -11,24 +11,24 @@
       ansible.builtin.dnf:
         name: mongodb-org
         state: latest
-    # - name: systemctl enable & start mongod service
-    # - name: systemctl start mongod service
-    - name: enable mongod
-      ansible.builtin.service:
-        name: mongod
-        state: started
-        enabled: yes
     # - name: update ip address to 0.0.0.0
     - name: replace ip
       ansible.builtin.replace:
         path: /etc/mongod.conf
         regexp: 127.0.0.1
         replace: 0.0.0.0
-    # - name: systemctl restart mongod service
-    - name: restart mongod
+    # - name: systemctl enable & start mongod service
+    # - name: systemctl start mongod service
+    - name: enable and start mongod
       ansible.builtin.service:
         name: mongod
-        state: restarted
+        state: started
+        enabled: yes
+    # - name: systemctl restart mongod service
+    # - name: restart mongod
+    #   ansible.builtin.service:
+    #     name: mongod
+    #     state: restarted
 
 
   
