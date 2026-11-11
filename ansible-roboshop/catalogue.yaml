@@ -3,10 +3,14 @@
   become: yes
   tasks:
     # disable nodejs
-    - name: install nodejs 20
+    - name: enable nodejs 20
+      ansible.builtin.command: dnf module enable nodejs:20 -y
+    
+    - name: install nodejs
       ansible.builtin.dnf:
-        name: nodejs:20
+        name: nodejs
         state: present
+        
     # - name: add application user
     - name: add roboshop user
       ansible.builtin.user:
