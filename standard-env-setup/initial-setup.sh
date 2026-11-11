@@ -3,7 +3,6 @@
 set -x 
 set -e
 
-source ./aws-setup.sh
 
 mkdir source
 cd source
@@ -15,8 +14,7 @@ sudo dnf install ansible -y
 # prereq python libraries to run ansible 
 pip install botocore boto3
 
-install_awscli
-set_aws_commands
+
 
 
 

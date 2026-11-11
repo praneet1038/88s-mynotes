@@ -30,7 +30,8 @@ set_aws_commands(){
     done  
 }
 
-
+install_awscli
+set_aws_commands
 
 # describe all aws ec2 instances to confirm
 # aws-ec2-desall 
