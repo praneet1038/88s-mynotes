@@ -4,7 +4,7 @@ set -x
 set -e
 
 
-mkdir source
+mkdir -pv source # parents, verbose
 cd source
 sudo git clone https://github.com/praneet1038/88s-mynotes
 cd 88s-mynotes/ansible-roboshop
