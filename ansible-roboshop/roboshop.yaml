@@ -62,13 +62,18 @@
         - action == "create"
 
     
-    - name: delete ec2 instances
+    - name: delete route53 records
       amazon.aws.ec2_instance:
         state: present
         name: "{{ item }}-{{ env }}"
+        zone: "{{ domain }}"
+        type: A
       loop: "{{ instances }}"
       register: ec2_output
-      when: 
-        - action == "create"
+      when: action == "delete"
 
-    - name: destroy r53 routes
+    - name: delete ec2 instances
+      amazon.aws.ec2_instance:
+        name: "{{ item }}-{{ env }}"
+        register: ec2_output
+        when: action == "delete"
