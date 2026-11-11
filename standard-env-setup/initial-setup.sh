@@ -1,5 +1,7 @@
 #!/bin/bash
+# echo all commands before exec
 set -x 
+set -e
 mkdir source
 cd source
 sudo git clone https://github.com/praneet1038/88s-mynotes
@@ -14,7 +16,7 @@ pip install botocore boto3
 
 
 # make aws scripts shell commands
-cd source/88s-mynotes/aws_scripts
+cd 88s-mynotes/aws_scripts
 for f in *; do 
     echo "$f"
     cp $f "/usr/bin/${f%.*}"
