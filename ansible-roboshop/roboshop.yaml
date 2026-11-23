@@ -24,7 +24,7 @@
           Environment: "{{ env }}"
       loop: "{{ instances }}"
       register: ec2_output
-      action: "create"
+      when: action == "create"
 
     - name: get private ip
       ansible.builtin.debug:
@@ -60,7 +60,6 @@
       when:
         - item.item == "frontend"
         - action == "create"
-
     
     - name: delete route53 records
       amazon.aws.ec2_instance:
