@@ -75,6 +75,15 @@
 
     - name: delete ec2 instances
       amazon.aws.ec2_instance:
+        state: absent
+        security_group: "{{ sg_id }}"
+        instance_type: "t3.micro"
+        image_id: "{{ img_id }}"
         name: "{{ item }}-{{ env }}"
-        register: ec2_output
-        when: action == "delete"
+        tags:
+          Name: "{{ item }}-{{ env }}"
+          Project: "roboshop"
+          Component: "{{ item }}"
+          Environment: "{{ env }}"
+      loop: "{{ instances }}"
+      when: action == "delete"
