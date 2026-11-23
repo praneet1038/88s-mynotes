@@ -64,7 +64,7 @@
         - action == "create"
     
     - name: delete route53 records
-      amazon.aws.ec2_instance:
+      amazon.aws.route53:
         state: absent
         record: "{{ item }}-{{ env }}.{{ domain }}"
         zone: "{{ domain }}"
