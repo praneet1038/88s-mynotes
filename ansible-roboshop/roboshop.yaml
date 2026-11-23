@@ -65,11 +65,11 @@
     
     - name: delete route53 records
       amazon.aws.ec2_instance:
-        state: present
-        name: "{{ item }}-{{ env }}"
+        state: absent
+        record: "{{ item }}-{{ env }}.{{ domain }}"
         zone: "{{ domain }}"
         type: A
-      loop: "{{ instances }}"
+      loop: "{{ instances }}-{{ env }}"
       register: ec2_output
       when: action == "delete"
 
