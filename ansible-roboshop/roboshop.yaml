@@ -30,6 +30,8 @@
       ansible.builtin.debug:
         msg: "{{ item.instances[0].private_ip_address }} : {{ item.instances[0].public_ip_address }}"
       loop: "{{ ec2_output.results }}"
+      when: action == "create"
+
     
     - name: Add private IP A records and wait until the changes have been replicated
       amazon.aws.route53:
