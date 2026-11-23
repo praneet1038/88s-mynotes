@@ -69,7 +69,7 @@
         record: "{{ item }}-{{ env }}.{{ domain }}"
         zone: "{{ domain }}"
         type: A
-      loop: "{{ instances }}-{{ env }}"
+      loop: "{{ instances }}"
       register: ec2_output
       when: action == "delete"
 
