@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# curl -fsSL 'https://raw.githubusercontent.com/praneet1038/88s-mynotes/refs/heads/ansible-roboshop/standard-env-setup/4-git-alias.sh' | bash
+
+# print all commands before exec
+
+set -x 
+set -e
+
 alias g=git
 
 alias ga='git add'
