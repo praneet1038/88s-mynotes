@@ -9,17 +9,17 @@ set -e
 
 alias g=git
 
-alias ga='git add'
+alias ga=git add
 
-alias gaa='git add .'
+alias gaa=git add .
 
-alias gp='git push'
+alias gp=git push
 
-alias gpd='git push -n'
+alias gpd=git push -n
 
-alias gaun='git add -u -n'
+alias gaun=git add -u -n
 
-alias gacom='git commit -a -m '
+alias gacom=git commit -a -m 
 
 # git status -short
 
