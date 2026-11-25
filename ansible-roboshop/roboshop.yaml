@@ -69,6 +69,7 @@
         record: "{{ item }}-{{ env }}.{{ domain }}"
         zone: "{{ domain }}"
         type: A
+        wait: false
       loop: "{{ instances }}"
       register: ec2_output
       when: action == "delete"
@@ -85,5 +86,6 @@
           Project: "roboshop"
           Component: "{{ item }}"
           Environment: "{{ env }}"
+        wait: false
       loop: "{{ instances }}"
       when: action == "delete"
