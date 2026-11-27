@@ -7,8 +7,14 @@ Install dependencies for aws
 ### inventory.ini
 Logically organized list of managed nodes 
 
+# Before running next command aws must be configured
 ### setup managed nodes with roboshop.yaml
 `ansible-playbook -i localhost, roboshop.yaml`
+`ansible-playbook -i localhost, roboshop.yaml -e 'instances=["mongodb","catalogue","user"]'`
+`ansible-playbook -i localhost, roboshop.yaml -e 'instances=["mongodb","catalogue","user"]' --check`
+`ansible-playbook -i localhost, roboshop.yaml -e 'instances=["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"]'`
+### delete all instances
+`ansible-playbook -i localhost, roboshop.yaml -e 'instances=["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"] action=delete'`
 
 ### output
 ![alt text](image-1.png)
@@ -22,6 +28,7 @@ roboshop.yaml
 
 ### install mongodb
 mongodb.yaml
+`ansible-playbook -i inventory.ini mongodb.yaml`
 
 ### output
 ![alt text](image.png)
