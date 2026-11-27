@@ -26,7 +26,9 @@ sudo git switch ansible-roboshop
 sudo dnf install ansible -y
 # prereq python libraries to run ansible 
 pip install botocore boto3
-# aws configure
+
+# IMPORTANT aws configure 
+aws configure
 
 
 
